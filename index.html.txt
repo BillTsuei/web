@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>崔源生 醫師 | 個人官方網站</title>
+    <style>
+        :root {
+            --primary-color: #1a568c;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .profile-info h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .profile-info h2 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .profile-info p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* Section Styling */
+        section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Grid Lists */
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .card-item {
+            background: var(--bg-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* Timeline / Lists */
+        .timeline-list {
+            list-style: none;
+        }
+
+        .timeline-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Links Section */
+        .media-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .media-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.2s ease;
+        }
+
+        .media-card:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .media-card .source {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 個人頭像與基本資料 -->
+    <header>
+        <!-- 請將 src 替換為您的頭像照片檔案路徑 -->
+        <img src="avatar.jpg" alt="崔源生 醫師" class="profile-img">
+        <div class="profile-info">
+            <h1>崔源生 醫師</h1>
+            <h2>腦血管外科與介入治療專科醫師 / 腦中風治療專家</h2>
+            <p><strong>專長領域：</strong>急性缺血性腦中風機械取栓、顱內動脈瘤微創手術、動靜脈畸形與瘻管處置、頸動脈支架置放術</p>
+            <p>致力於提供最先進的腦血管介入治療與複合式手術，守護患者腦血管健康。</p>
+        </div>
+    </header>
+
+    <!-- 臨床專長區塊 -->
+    <section>
+        <h2>核心醫療專長</h2>
+        <div class="grid-list">
+            <div class="card-item">
+                <strong>腦血管介入手術</strong>
+                <p>急性腦中風取栓術、頸動脈支架置放</p>
+            </div>
+            <div class="card-item">
+                <strong>腦血管微創處置</strong>
+                <p>顱內動脈瘤栓塞、動靜脈畸形治療</p>
+            </div>
+            <div class="card-item">
+                <strong>複合式手術 (Hybrid)</strong>
+                <p>結合外科與介入手術之複雜血管處置</p>
+            </div>
+            <div class="card-item">
+                <strong>常壓性水腦症</strong>
+                <p>腰椎腹腔引流術及臨床評估</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 媒體報導與專訪 -->
+    <section>
+        <h2>媒體報導與專訪連結</h2>
+        <div class="media-links">
+            <a href="https://www.businessweekly.com.tw/style/indep/1001309/" target="_blank" class="media-card">
+                <span>商業周刊：風格生活與良醫專訪</span>
+                <span class="source">商業周刊</span>
+            </a>
+            <a href="https://health.udn.com/health/story/5965/4982531/" target="_blank" class="media-card">
+                <span>元氣網：腦血管健康與中風防治專訪</span>
+                <span class="source">聯合新聞網</span>
+            </a>
+            <a href="https://udn.com/news/story/7266/3590488" target="_blank" class="media-card">
+                <span>聯合新聞網：醫療專題報導</span>
+                <span class="source">聯合新聞網</span>
+            </a>
+            <a href="https://www.worldjournal.com/6436100/article-%E5%8F%B0%E7%81%A3%E9%86%AB%E7%99%82%E5%A5%87%E8%B9%9F%E2%95%B1%E8%A4%87%E5%90%88%E6%89%8B%E8%A1%93-%E8%A7%A3%E5%A5%97%E9%A0%B8%E5%8B%95%E8%84%88%E5%A0%B5%E5%A1%9E/" target="_blank" class="media-card">
+                <span>世界新聞網：台灣醫療奇蹟／複合手術 解套頸動脈阻塞</span>
+                <span class="source">世界新聞網</span>
+            </a>
+            <a href="http://news.ltn.com.tw/news/life/paper/822342" target="_blank" class="media-card">
+                <span>自由時報：腦血管醫療專題</span>
+                <span class="source">自由時報</span>
+            </a>
+            <a href="https://www.setn.com/News.aspx?NewsID=587644" target="_blank" class="media-card">
+                <span>三立新聞網：常壓性水腦症與腦部保健專訪</span>
+                <span class="source">三立新聞網</span>
+            </a>
+            <a href="https://health.businessweekly.com.tw/IDoctor.aspx?id=DOC0000000342" target="_blank" class="media-card">
+                <span>良醫健康網：醫師個人專頁與評估</span>
+                <span class="source">良醫健康網</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 2026 崔源生醫師 版權所有 | 個人醫療網頁</p>
+    </footer>
+</div>
+
+</body>
+</html>
