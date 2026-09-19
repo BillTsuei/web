@@ -17,6 +17,8 @@
             --text-color: #333333;
             --text-muted: #555555;
             --orcid-color: #a6ce39;
+            --fb-color: #1877f2;
+            --pubmed-color: #205493;
         }
 
         * {
@@ -85,7 +87,7 @@
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
@@ -116,6 +118,33 @@
             transform: translateY(-1px);
         }
 
+        /* Facebook Badge Style */
+        .fb-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: #f0f4fd;
+            color: #1877f2;
+            border: 1px solid #c6dafc;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .fb-link i {
+            color: var(--fb-color);
+            font-size: 1.1rem;
+        }
+
+        .fb-link:hover {
+            background-color: #e1ecfe;
+            border-color: var(--fb-color);
+            transform: translateY(-1px);
+        }
+
         .profile-info p {
             color: var(--text-muted);
             margin-bottom: 8px;
@@ -139,8 +168,8 @@
 
         .icon-nav {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
         }
 
         .icon-btn {
@@ -148,7 +177,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 15px 10px;
+            padding: 12px 8px;
             background: var(--bg-color);
             border-radius: 10px;
             text-decoration: none;
@@ -158,14 +187,14 @@
         }
 
         .icon-btn i {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             transition: transform 0.2s ease;
         }
 
         .icon-btn span {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             font-weight: bold;
             text-align: center;
         }
@@ -256,7 +285,7 @@
             line-height: 1.6;
         }
 
-        /* 雙欄媒體報導選單 (Two-Column Grid) */
+        /* 雙欄媒體報導選單 */
         .media-links-two-column {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -375,6 +404,70 @@
             color: var(--accent-color);
         }
 
+        /* PubMed / Reference Styling */
+        .pubmed-box {
+            background: #f0f4f9;
+            border: 1px solid #d0e0f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pubmed-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--pubmed-color);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .pubmed-btn:hover {
+            background-color: #12335b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(32, 84, 147, 0.3);
+        }
+
+        .ref-list {
+            list-style: none;
+        }
+
+        .ref-item {
+            background: var(--bg-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--pubmed-color);
+            font-size: 0.93rem;
+            line-height: 1.5;
+        }
+
+        .ref-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .ref-title:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .ref-meta {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
         /* Timeline / Education List */
         .timeline-list {
             list-style: none;
@@ -414,10 +507,15 @@
                 height: 170px;
             }
             .icon-nav {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
             .media-links-two-column {
                 grid-template-columns: 1fr;
+            }
+            .pubmed-box {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
             }
         }
     </style>
@@ -434,8 +532,13 @@
             <h1>崔源生 醫師</h1>
             <h2>
                 台中榮總科主任 / 中興大學部定副教授
+                <!-- ORCID 標籤 -->
                 <a href="https://orcid.org/0000-0002-8495-5458" target="_blank" class="orcid-link" title="前往 ORCID 個人學術檔案頁面">
                     <i class="fa-brands fa-orcid"></i> ORCID: 0000-0002-8495-5458
+                </a>
+                <!-- Facebook 標籤 -->
+                <a href="https://www.facebook.com/strokepreventioncenter/?locale=zh_TW" target="_blank" class="fb-link" title="前往 Facebook 粉絲專頁">
+                    <i class="fa-brands fa-facebook"></i> 腦中風暨腦血管疾病防治中心
                 </a>
             </h2>
             <p class="society-title">第五屆台灣神經血管外科與介入治療醫學會理事長 (TSNIS)</p>
@@ -444,7 +547,7 @@
         </div>
     </header>
 
-    <!-- 照片下方五大功能 Icon 快捷導航選單 -->
+    <!-- 照片下方六大功能 Icon 快捷導航選單 -->
     <div class="icon-nav-container">
         <nav class="icon-nav">
             <a href="#experience" class="icon-btn">
@@ -461,11 +564,15 @@
             </a>
             <a href="#brain-health" class="icon-btn">
                 <i class="fa-solid fa-brain"></i>
-                <span>腦血管衛教單元</span>
+                <span>腦血管衛教</span>
             </a>
             <a href="#spine-health" class="icon-btn">
                 <i class="fa-solid fa-bone"></i>
-                <span>脊椎衛教單元</span>
+                <span>脊椎衛教</span>
+            </a>
+            <a href="#references" class="icon-btn">
+                <i class="fa-solid fa-book-bookmark"></i>
+                <span>參考文獻</span>
             </a>
         </nav>
     </div>
@@ -546,7 +653,7 @@
         </div>
     </section>
 
-    <!-- 3. 媒體報導與專訪（雙欄佈局） -->
+    <!-- 3. 媒體報導與專訪 -->
     <section id="media">
         <h2><i class="fa-solid fa-newspaper"></i> 媒體報導與專訪</h2>
         <div class="media-links-two-column">
@@ -580,7 +687,7 @@
                 <span class="source">自由時報</span>
             </a>
 
-            <!-- 右欄 3（更新為健康醫療網網址） -->
+            <!-- 右欄 3 -->
             <a href="https://www.healthnews.com.tw/article/25043" target="_blank" class="media-card">
                 <span class="media-title">常壓性水腦症釀失智：腰椎腹腔引流助改善</span>
                 <span class="source">健康醫療網</span>
@@ -688,6 +795,61 @@
                 <div class="card-action">閱讀衛教文章 <i class="fa-solid fa-arrow-right"></i></div>
             </a>
         </div>
+    </section>
+
+    <!-- 6. 學術發表與參考文獻 -->
+    <section id="references">
+        <h2><i class="fa-solid fa-book-bookmark"></i> 學術發表與參考文獻</h2>
+        
+        <!-- PubMed 直達連線按鈕區 -->
+        <div class="pubmed-box">
+            <div>
+                <strong style="font-size: 1.05rem; color: var(--secondary-color);">PubMed 美國國家生物技術資訊中心論文資料庫</strong>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">收錄崔源生醫師（Tsuei YS）於國際知名神經外科及腦血管醫學期刊發表之研究著作與論文清單。</p>
+            </div>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=tsuei+ys&size=50" target="_blank" class="pubmed-btn">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> 檢視 PubMed 論文清單 (Tsuei YS)
+            </a>
+        </div>
+
+        <!-- 代表性學術論文參考文獻列表 -->
+        <ul class="ref-list">
+            <li class="ref-item">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/25164693/" target="_blank" class="ref-title">
+                    • An acute cerebral venous sinus thrombosis
+                </a>
+                <div class="ref-meta">
+                    <strong>Tsuei YS</strong>, et al. | Department of Neurosurgery, Taichung Veterans General Hospital | PMID: 25164693
+                </div>
+            </li>
+
+            <li class="ref-item">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/24867146/" target="_blank" class="ref-title">
+                    • A Case of Giant Thrombosed Persistent Primitive Trigeminal Artery
+                </a>
+                <div class="ref-meta">
+                    Chen WH, Tsai TH, Shen SC, Shen CC, <strong>Tsuei YS</strong>. | Clin Neuroradiol. | PMID: 24867146
+                </div>
+            </li>
+
+            <li class="ref-item">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/15813246/" target="_blank" class="ref-title">
+                    • Civilian gunshot wounds to the brain: experience in Taichung Veterans General Hospital
+                </a>
+                <div class="ref-meta">
+                    <strong>Tsuei YS</strong>, et al. | Department of Neurosurgery, Taichung Veterans General Hospital | PMID: 15813246
+                </div>
+            </li>
+
+            <li class="ref-item">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/20158467/" target="_blank" class="ref-title">
+                    • Characterization of endogenous neural progenitor cells after traumatic brain injury
+                </a>
+                <div class="ref-meta">
+                    <strong>Tsuei YS</strong>, Ko JL, et al. | Department of Neurosurgery, Taichung Veterans General Hospital | PMID: 20158467
+                </div>
+            </li>
+        </ul>
     </section>
 
     <!-- 頁尾 -->
