@@ -1372,22 +1372,29 @@
 
 <!-- JS 互動腳本 -->
 <script>
-    function loadWaline() {
+    async function loadWaline() {
         const container = document.getElementById('waline');
-        if (!container || container.dataset.loaded === 'true') return;
-        if (!window.Waline) {
-            container.innerHTML = '<p>留言系統載入中，請稍後再試。</p>';
-            return;
+        if (!container || container.dataset.loaded === 'true' || container.dataset.loading === 'true') return;
+        container.dataset.loading = 'true';
+        container.innerHTML = '<p>留言系統載入中，請稍候。</p>';
+        try {
+            const { init } = await import('https://unpkg.com/@waline/client@v3/dist/waline.js');
+            container.innerHTML = '';
+            init({
+                el: '#waline',
+                serverURL: 'https://waline-server-three-nu.vercel.app',
+                lang: 'zh-TW',
+                login: 'enable',
+                requiredMeta: ['nick', 'mail'],
+                reaction: true,
+                dark: 'auto'
+            });
+            container.dataset.loaded = 'true';
+        } catch (error) {
+            console.error('Waline 載入失敗：', error);
+            container.innerHTML = '<p>留言系統暫時無法載入，請確認網路連線後重新整理頁面再試。</p>';
+            container.dataset.loading = 'false';
         }
-        window.Waline.init({
-            el: '#waline',
-            serverURL: 'https://waline-server-three-nu.vercel.app',
-            lang: 'zh-TW',
-            login: 'enable',
-            requiredMeta: ['nick', 'mail'],
-            dark: 'auto'
-        });
-        container.dataset.loaded = 'true';
     }
     // 視窗開啟 / 關閉控制
     function openModal(modalId) {
@@ -1408,7 +1415,7 @@
     }
 </script>
 
-    <script src="https://unpkg.com/@waline/client@v3/dist/waline.js"></script>
 </body>
 </html>
+
 
