@@ -1,564 +1,1013 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>崔源生醫師 Yuang-Seng Tsuei, MD | 腦血管與微創手術專家</title>
-  <style>
-    :root {
-      --primary-color: #1a4b84;
-      --secondary-color: #2c7be5;
-      --accent-color: #e63946;
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --text-color: #333333;
-      --text-muted: #6c757d;
-      --border-radius: 12px;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>崔源生 醫師 Yuang-Seng Tsuei, MD | 個人官方網站</title>
+    <!-- 引入 Font Awesome 6 免費 Icon 庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a568c;
+            --primary-dark: #0f385d;
+            --secondary-color: #2c3e50;
+            --accent-color: #a61c1c;
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #555555;
+            --orcid-color: #a6ce39;
+            --fb-color: #1877f2;
+            --pubmed-color: #205493;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-    /* 頂部導覽列 */
-    header {
-      background-color: var(--card-bg);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+        /* Header / Hero Section */
+        header {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 35px 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
 
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      text-decoration: none;
-    }
+        .profile-img-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
+        .profile-img {
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            object-fit: contain;
+            background-color: #f0f4f8;
+            border: 4px solid var(--primary-color);
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
-      transition: color 0.2s;
-    }
+        .profile-info h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
 
-    .nav-links a:hover {
-      color: var(--secondary-color);
-    }
+        .profile-info h1 .en-name {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 12px;
+        }
 
-    /* Hero 個人簡介區塊 */
-    .hero {
-      padding: 60px 0 40px;
-      background: linear-gradient(135deg, #eef2f7 0%, #ffffff 100%);
-    }
+        .profile-info h2 {
+            font-size: 1.15rem;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
 
-    .hero-content {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
+        /* ORCID Badge */
+        .orcid-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: #f4fbf0;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
 
-    .hero-avatar {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-      border: 4px solid #fff;
-      flex-shrink: 0;
-    }
+        .orcid-link i {
+            color: var(--orcid-color);
+            font-size: 1.1rem;
+        }
 
-    .hero-text h1 {
-      font-size: 2.2rem;
-      color: var(--primary-color);
-      margin-bottom: 8px;
-    }
+        .orcid-link:hover {
+            background-color: #e8f5e9;
+            border-color: var(--orcid-color);
+            transform: translateY(-1px);
+        }
 
-    .hero-text .en-name {
-      font-size: 1.3rem;
-      color: var(--text-muted);
-      font-weight: 400;
-      margin-left: 10px;
-    }
+        /* Facebook Badge Style */
+        .fb-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: #f0f4fd;
+            color: #1877f2;
+            border: 1px solid #c6dafc;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
 
-    .hero-text h2 {
-      font-size: 1.2rem;
-      color: var(--secondary-color);
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
+        .fb-link i {
+            color: var(--fb-color);
+            font-size: 1.1rem;
+        }
 
-    .hero-text p {
-      color: #4a5568;
-      margin-bottom: 20px;
-      max-width: 650px;
-    }
+        .fb-link:hover {
+            background-color: #e1ecfe;
+            border-color: var(--fb-color);
+            transform: translateY(-1px);
+        }
 
-    .btn-group {
-      display: flex;
-      gap: 12px;
-    }
+        .profile-info p {
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
+        .society-title {
+            color: var(--accent-color) !important;
+            font-weight: bold;
+            font-size: 1.05rem !important;
+        }
 
-    .btn-primary {
-      background-color: var(--secondary-color);
-      color: #fff;
-    }
+        /* Icon Quick Menu Section */
+        .icon-nav-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
 
-    .btn-primary:hover {
-      background-color: #1a62ca;
-    }
+        .icon-nav {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
 
-    .btn-outline {
-      border: 1px solid var(--secondary-color);
-      color: var(--secondary-color);
-    }
+        .icon-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 8px;
+            background: var(--bg-color);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: all 0.25s ease;
+            border: 1px solid #e0e0e0;
+        }
 
-    .btn-outline:hover {
-      background-color: #eff6ff;
-    }
+        .icon-btn i {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            transition: transform 0.2s ease;
+        }
 
-    /* 通用章節標題 */
-    section {
-      padding: 50px 0;
-    }
+        .icon-btn span {
+            font-size: 0.88rem;
+            font-weight: bold;
+            text-align: center;
+        }
 
-    .section-title {
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        .icon-btn:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(26, 86, 140, 0.2);
+        }
 
-    /* 腦血管衛教區塊 */
-    .education-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 40px;
-    }
+        .icon-btn:hover i {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
 
-    .edu-card {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-      border-left: 5px solid var(--secondary-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+        /* Section Styling */
+        section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            scroll-margin-top: 20px;
+        }
 
-    .edu-card.card-1 { border-left-color: #2c7be5; }
-    .edu-card.card-2 { border-left-color: #e63946; }
-    .edu-card.card-3 { border-left-color: #008080; }
+        section h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
+        /* 神經外科專長卡片 */
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+        }
 
-    .card-icon {
-      font-size: 1.8rem;
-      line-height: 1;
-    }
+        .specialty-card-featured {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e3e8ee;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
 
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #1e293b;
-    }
+        .specialty-card-featured:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(26, 86, 140, 0.08);
+        }
 
-    .card-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
+        .specialty-card-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #ffffff;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .btn-read {
-      align-self: flex-end;
-      background: none;
-      border: none;
-      color: var(--secondary-color);
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.95rem;
-      text-decoration: none;
-    }
+        .specialty-card-header i {
+            font-size: 1.3rem;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
 
-    /* 衛教文章詳細展現 */
-    .content-article {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 28px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow);
-    }
+        .specialty-card-header strong {
+            font-size: 1.05rem;
+            letter-spacing: 0.3px;
+        }
 
-    .article-title {
-      font-size: 1.4rem;
-      color: var(--primary-color);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #f1f5f9;
-    }
+        .specialty-card-body {
+            padding: 18px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
 
-    .article-body h4 {
-      font-size: 1.1rem;
-      color: #334155;
-      margin: 16px 0 8px 0;
-    }
+        /* 雙欄媒體報導選單 */
+        .media-links-two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
 
-    .article-body ul, .article-body ol {
-      padding-left: 20px;
-      margin-bottom: 12px;
-    }
+        .media-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.2s ease;
+            border: 1px solid #eef2f5;
+        }
 
-    .highlight-box {
-      background-color: #eff6ff;
-      border-left: 4px solid var(--secondary-color);
-      padding: 16px;
-      border-radius: 4px;
-      margin: 16px 0;
-    }
+        .media-card:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 86, 140, 0.15);
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-    }
+        .media-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding-right: 10px;
+        }
 
-    th, td {
-      border: 1px solid #e2e8f0;
-      padding: 10px 14px;
-      text-align: left;
-      font-size: 0.95rem;
-    }
+        .media-card .source {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            background: rgba(0,0,0,0.05);
+            padding: 3px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
 
-    th {
-      background-color: #f8fafc;
-    }
+        .media-card:hover .source {
+            background: rgba(255,255,255,0.2);
+            color: #ffffff;
+        }
 
-    /* 媒體報導（雙欄排版） */
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      gap: 24px;
-    }
+        /* 普通可點擊卡片（衛教單元） */
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
 
-    .media-card {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
+        /* 摺疊衛教文章 (details / summary) 樣式 */
+        details.card-item-clickable {
+            background: var(--bg-color);
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.25s ease;
+            overflow: hidden;
+        }
 
-    .media-card h3 {
-      font-size: 1.15rem;
-      color: var(--primary-color);
-      margin-bottom: 8px;
-    }
+        details.card-item-clickable[open] {
+            background: #ffffff;
+            border-left-color: var(--accent-color);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
 
-    .media-meta {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
+        summary.card-summary {
+            padding: 18px 20px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-    .media-card p {
-      font-size: 0.95rem;
-      color: #4a5568;
-      margin-bottom: 16px;
-    }
+        summary.card-summary::-webkit-details-marker {
+            display: none;
+        }
 
-    .media-link {
-      color: var(--secondary-color);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
 
-    .media-link:hover {
-      text-decoration: underline;
-    }
+        .card-header i {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            transition: color 0.2s ease;
+        }
 
-    /* 頁尾 */
-    footer {
-      background-color: #1e293b;
-      color: #94a3b8;
-      text-align: center;
-      padding: 30px 0;
-      font-size: 0.9rem;
-    }
+        details[open] .card-header i {
+            color: var(--accent-color);
+        }
 
-    @media (max-width: 768px) {
-      .hero-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      .btn-group {
-        justify-content: center;
-      }
-      .media-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+        .card-header strong {
+            font-size: 1.05rem;
+            color: var(--secondary-color);
+        }
+
+        .card-body-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .card-action {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            align-self: flex-end;
+        }
+
+        details[open] .card-action {
+            color: var(--accent-color);
+        }
+
+        /* 展開後的衛教文章內文區塊 */
+        .article-content {
+            padding: 0 20px 20px 20px;
+            border-top: 1px solid #eef2f5;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #444444;
+            line-height: 1.7;
+        }
+
+        .article-content h4 {
+            font-size: 1.05rem;
+            color: var(--primary-color);
+            margin: 16px 0 8px 0;
+        }
+
+        .article-content ul, .article-content ol {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .article-content li {
+            margin-bottom: 6px;
+        }
+
+        .article-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin: 12px 0;
+        }
+
+        .article-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .article-table th, .article-table td {
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .article-table th {
+            background-color: #f8fafc;
+        }
+
+        /* PubMed / Reference Styling */
+        .pubmed-box {
+            background: #f0f4f9;
+            border: 1px solid #d0e0f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pubmed-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--pubmed-color);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .pubmed-btn:hover {
+            background-color: #12335b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(32, 84, 147, 0.3);
+        }
+
+        .ref-list {
+            list-style: none;
+        }
+
+        .ref-item {
+            background: var(--bg-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--pubmed-color);
+            font-size: 0.93rem;
+            line-height: 1.5;
+        }
+
+        .ref-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .ref-title:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .ref-meta {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Timeline / Education List */
+        .timeline-list {
+            list-style: none;
+        }
+
+        .timeline-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+            .profile-img {
+                width: 170px;
+                height: 170px;
+            }
+            .icon-nav {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .media-links-two-column {
+                grid-template-columns: 1fr;
+            }
+            .pubmed-box {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- 頂部選單 -->
-  <header>
-    <div class="nav-container">
-      <a href="#" class="logo">崔源生醫師 官網</a>
-      <ul class="nav-links">
-        <li><a href="#about">關於醫師</a></li>
-        <li><a href="#education">腦血管衛教</a></li>
-        <li><a href="#media">媒體報導</a></li>
-      </ul>
+<div class="container">
+    <!-- 個人頭像與基本資料 -->
+    <header>
+        <div class="profile-img-container">
+            <img src="avatar.jpg" alt="崔源生 醫師" class="profile-img">
+        </div>
+        <div class="profile-info">
+            <h1>
+                崔源生 醫師
+                <span class="en-name">Yuang-Seng Tsuei, MD</span>
+            </h1>
+            <h2>
+                台中榮總科主任 / 中興大學部定副教授
+                <!-- ORCID 標籤 -->
+                <a href="https://orcid.org/0000-0002-8495-5458" target="_blank" class="orcid-link" title="前往 ORCID 個人學術檔案頁面">
+                    <i class="fa-brands fa-orcid"></i> ORCID: 0000-0002-8495-5458
+                </a>
+                <!-- Facebook 標籤 -->
+                <a href="https://www.facebook.com/strokepreventioncenter/?locale=zh_TW" target="_blank" class="fb-link" title="前往 Facebook 粉絲專頁">
+                    <i class="fa-brands fa-facebook"></i> 腦中風暨腦血管疾病防治中心
+                </a>
+            </h2>
+            <p class="society-title">第五屆台灣神經血管外科與介入治療醫學會理事長 (TSNIS)</p>
+            <p><strong>專長領域：</strong>腦動脈瘤/腦瘤開顱手術、急性缺血性腦中風機械取栓、顱內動脈瘤微創手術、動靜脈畸形處置、脊椎手術、常壓性腦水腰椎分流手術[cite: 4, 6]</p>
+            <p>致力於提供最先進的腦血管介入手術、顯微開顱與複合式手術，守護患者腦與脊椎健康[cite: 6]。</p>
+        </div>
+    </header>
+
+    <!-- 照片下方六大功能 Icon 快捷導航選單 -->
+    <div class="icon-nav-container">
+        <nav class="icon-nav">
+            <a href="#experience" class="icon-btn">
+                <i class="fa-solid fa-user-doctor"></i>
+                <span>學經歷</span>
+            </a>
+            <a href="#specialties" class="icon-btn">
+                <i class="fa-solid fa-award"></i>
+                <span>神經外科專長</span>
+            </a>
+            <a href="#media" class="icon-btn">
+                <i class="fa-solid fa-newspaper"></i>
+                <span>媒體報導</span>
+            </a>
+            <a href="#brain-health" class="icon-btn">
+                <i class="fa-solid fa-brain"></i>
+                <span>腦血管衛教</span>
+            </a>
+            <a href="#spine-health" class="icon-btn">
+                <i class="fa-solid fa-bone"></i>
+                <span>脊椎衛教</span>
+            </a>
+            <a href="#references" class="icon-btn">
+                <i class="fa-solid fa-book-bookmark"></i>
+                <span>參考文獻</span>
+            </a>
+        </nav>
     </div>
-  </header>
 
-  <!-- Hero 主視覺／個人簡介 -->
-  <section id="about" class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <img src="avatar.jpg" alt="崔源生醫師" class="hero-avatar" onerror="this.src='https://via.placeholder.com/180'">
-        <div class="hero-text">
-          <h1>崔源生 <span class="en-name">Yuang-Seng Tsuei, MD</span></h1>
-          <h2>神經外科專科醫師 / 腦血管微創手術專家</h2>
-          <p>專長於急性缺血性腦中風動脈機械取栓術、顱內動脈瘤微創栓塞與開顱手術、頸動脈狹窄支架置放術等腦血管微創介入治療[cite: 4, 6]。</p>
-          <div class="btn-group">
-            <a href="https://www.facebook.com" target="_blank" class="btn btn-primary">FB 官方粉絲專頁</a>
-            <a href="#education" class="btn btn-outline">瀏覽衛教專區</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- 1. 學經歷 -->
+    <section id="experience">
+        <h2><i class="fa-solid fa-user-doctor"></i> 學經歷</h2>
+        <ul class="timeline-list">
+            <li><strong>現職與學術職務：</strong>台中榮總科主任 ／ 中興大學部定副教授 ／ 第五屆台灣神經血管外科與介入治療醫學會理事長 (TSNIS)</li>
+            <li><strong>專科資格：</strong>神經外科專科醫師、腦血管介入治療專科醫師、重症醫學專科醫師</li>
+            <li><strong>學歷與臨床研究：</strong>國防醫學院 醫學士 ／ 中山醫學大學 博士 ／ 日本東北大學 臨床研究</li>
+        </ul>
+    </section>
 
-  <!-- 腦血管衛教單元 -->
-  <section id="education">
-    <div class="container">
-      <h2 class="section-title">🧠 腦血管衛教單元</h2>
-
-      <!-- 三個卡片快速選單 -->
-      <div class="education-grid">
-        <div class="edu-card card-1">
-          <div>
-            <div class="card-header">
-              <span class="card-icon">⏱️</span>
-              <h3 class="card-title">認識腦中風 FAST 口訣</h3>
+    <!-- 2. 神經外科專長 -->
+    <section id="specialties">
+        <h2><i class="fa-solid fa-award"></i> 神經外科專長</h2>
+        <div class="specialty-grid">
+            <div class="specialty-card-featured">
+                <div class="specialty-card-header">
+                    <i class="fa-solid fa-microscope"></i>
+                    <strong>1. 腦動脈瘤 / 腦瘤開顱手術</strong>
+                </div>
+                <div class="specialty-card-body">
+                    運用高階顯微鏡與神經導航定位系統，精準進行腦動脈瘤夾閉與腦腫瘤微創切除[cite: 6]。
+                </div>
             </div>
-            <p class="card-desc">臉歪(Face)、手軟(Arm)、大舌頭(Speech)、記下時間(Time)，把握黃金救援期[cite: 10]。</p>
-          </div>
-          <a href="#article-1" class="btn-read">閱讀衛教文章 &rarr;</a>
-        </div>
 
-        <div class="edu-card card-2">
-          <div>
-            <div class="card-header">
-              <span class="card-icon">⚠️</span>
-              <h3 class="card-title">顱內動脈瘤：腦中的不定時炸彈</h3>
+            <div class="specialty-card-featured">
+                <div class="specialty-card-header">
+                    <i class="fa-solid fa-notes-medical"></i>
+                    <strong>2. 腦血管介入與取栓手術</strong>
+                </div>
+                <div class="specialty-card-body">
+                    黃金救援期內實施大血管阻塞動脈取栓術 (IA Thrombectomy) 及頸動脈支架置放[cite: 4, 6]。
+                </div>
             </div>
-            <p class="card-desc">解析未破裂動脈瘤之追蹤策略、開顱夾閉與微創栓塞手術之評估選擇[cite: 10]。</p>
-          </div>
-          <a href="#article-2" class="btn-read">閱讀衛教文章 &rarr;</a>
-        </div>
 
-        <div class="edu-card card-3">
-          <div>
-            <div class="card-header">
-              <span class="card-icon">🫀</span>
-              <h3 class="card-title">頸動脈狹窄與腦缺血預防</h3>
+            <div class="specialty-card-featured">
+                <div class="specialty-card-header">
+                    <i class="fa-solid fa-disease"></i>
+                    <strong>3. 腦血管微創處置</strong>
+                </div>
+                <div class="specialty-card-body">
+                    經血管導管進行顱內動脈瘤密網支架、彈簧圈栓塞及腦動靜脈畸形/瘻管治療[cite: 6]。
+                </div>
             </div>
-            <p class="card-desc">認識頸動脈斑塊形成原因，血管超音波檢查與支架置放手術須知[cite: 10]。</p>
-          </div>
-          <a href="#article-3" class="btn-read">閱讀衛教文章 &rarr;</a>
+
+            <div class="specialty-card-featured">
+                <div class="specialty-card-header">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    <strong>4. 複合式手術 (Hybrid OR)</strong>
+                </div>
+                <div class="specialty-card-body">
+                    結合即時血管攝影與顯微外科手術，於複合式手術室一次完成複雜腦血管處置[cite: 6]。
+                </div>
+            </div>
+
+            <div class="specialty-card-featured">
+                <div class="specialty-card-header">
+                    <i class="fa-solid fa-bone"></i>
+                    <strong>5. 脊椎手術與微創照護</strong>
+                </div>
+                <div class="specialty-card-body">
+                    頸椎腰椎間盤突出、脊椎狹窄骨水泥灌注成形術及微創脊椎減壓融合手術。
+                </div>
+            </div>
+
+            <div class="specialty-card-featured">
+                <div class="specialty-card-header">
+                    <i class="fa-solid fa-person-walking-with-cane"></i>
+                    <strong>6. 常壓性腦水腰椎分流手術</strong>
+                </div>
+                <div class="specialty-card-body">
+                    採用腰椎腹腔分流術 (LP Shunt)，免開腦顯著改善高齡水腦症引發之步態不穩與失智。
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- 衛教文章內文 -->
-      <article id="article-1" class="content-article">
-        <h3 class="article-title">單元一：認識腦中風 FAST 口訣</h3>
-        <div class="article-body">
-          <h4>什麼是急性腦中風？</h4>
-          <p>急性腦中風是腦血管突發性的阻塞（缺血性中風，約佔 70-80%）或破裂（出血性中風，約佔 20-30%），導致腦細胞缺氧壞死[cite: 5]。腦細胞一旦缺血，每分鐘就會死亡近 200 萬個[cite: 4]！</p>
-          
-          <h4>搶救黃金期：FAST 口訣快速辨識</h4>
-          <p>發現身邊親友有異狀時，請立即進行以下測試[cite: 4, 10]：</p>
-          <ul>
-            <li><strong>F - Face (臉歪)：</strong> 請對方露齒微笑，觀察兩側臉部表情是否不對稱、嘴歪眼斜[cite: 4, 10]。</li>
-            <li><strong>A - Arm (手軟)：</strong> 請對方雙手平舉向前，觀察是否有單側手臂無力、垂落[cite: 4, 10]。</li>
-            <li><strong>S - Speech (大舌頭)：</strong> 請對方說一句簡單的話，聽聽看是否口齒不清、說不出來或無法理解語意[cite: 4, 10]。</li>
-            <li><strong>T - Time (記下時間)：</strong> <strong>只要出現上述任一症狀，立刻記下發作時間，並撥打 119 送醫！</strong>[cite: 4, 10]</li>
-          </ul>
+    <!-- 3. 媒體報導與專訪 -->
+    <section id="media">
+        <h2><i class="fa-solid fa-newspaper"></i> 媒體報導與專訪</h2>
+        <div class="media-links-two-column">
+            <!-- 左欄 1 -->
+            <a href="https://www.businessweekly.com.tw/style/indep/1001309/" target="_blank" class="media-card">
+                <span class="media-title">腦動脈瘤全解析：風格生活與良醫專訪</span>
+                <span class="source">商業周刊</span>
+            </a>
 
-          <div class="highlight-box">
-            <strong>💡 急性急救關鍵治療：</strong>
-            <ul>
-              <li><strong>靜脈溶栓（iv t-PA）：</strong> 發作 3～4.5 小時內，經評估可用藥溶解血栓[cite: 4, 6]。</li>
-              <li><strong>微創動脈導管機械取栓術：</strong> 發作 6～24 小時內，經 CT/MRI 影像評估具可拯救腦組織者，可透過微創導管伸入腦血管將血塊取出[cite: 4, 6]。</li>
-            </ul>
-          </div>
+            <!-- 右欄 1 -->
+            <a href="https://health.udn.com/health/story/6001/6650630" target="_blank" class="media-card">
+                <span class="media-title">椎間盤突出：神經外科崔源生醫師站著看診</span>
+                <span class="source">元氣網 / 聯合報</span>
+            </a>
+
+            <!-- 左欄 2 -->
+            <a href="http://docinhouse.pixnet.net/blog/post/164121035-%E6%AF%8F18%E5%88%86%E9%90%98%E5%B0%B1%E6%9C%891%E4%BA%BA%E4%B8%AD%E9%A2%A8-%E8%85%A6%E7%B4%B0%E8%83%9E%E6%90%8D%E5%82%B7%E6%AD%BB%E4%BA%A1%E6%A9%9F%E7%8E%87%E9%AB%98" target="_blank" class="media-card">
+                <span class="media-title">腦中風防治影片：每18分鐘1人中風 腦細胞損傷死亡率高</span>
+                <span class="source">醫師好辣</span>
+            </a>
+
+            <!-- 右欄 2 -->
+            <a href="https://health.udn.com/health/story/5965/3697405" target="_blank" class="media-card">
+                <span class="media-title">腦動脈瘤險要命：粉領族接受支架栓塞解除危機</span>
+                <span class="source">元氣網</span>
+            </a>
+
+            <!-- 左欄 3 -->
+            <a href="http://news.ltn.com.tw/news/life/paper/822342" target="_blank" class="media-card">
+                <span class="media-title">腦血管顱內支架：腦血管醫療救治專題</span>
+                <span class="source">自由時報</span>
+            </a>
+
+            <!-- 右欄 3 -->
+            <a href="https://www.healthnews.com.tw/article/25043" target="_blank" class="media-card">
+                <span class="media-title">常壓性水腦症釀失智：腰椎腹腔引流助改善</span>
+                <span class="source">健康醫療網</span>
+            </a>
+
+            <!-- 左欄 4 -->
+            <a href="https://www.youtube.com/watch?v=y4qSjrTk8TI" target="_blank" class="media-card">
+                <span class="media-title">頸椎腰椎健康操：頸椎椎間盤突出保養與自我檢測</span>
+                <span class="source">聚焦 2.0 / YouTube</span>
+            </a>
+
+            <!-- 右欄 4 -->
+            <a href="https://health.ltn.com.tw/article/breakingnews/5072844" target="_blank" class="media-card">
+                <span class="media-title">創新腦部擴增實境導航手術：新式經靜脈造影結合AR導航精準拆彈</span>
+                <span class="source">自由健康網</span>
+            </a>
+
+            <!-- 左欄 5 -->
+            <a href="https://health.ltn.com.tw/article/breakingnews/3776140" target="_blank" class="media-card">
+                <span class="media-title">複合式手術室創新：複合式手術室 (Hybrid OR) 醫療發展</span>
+                <span class="source">自由健康網</span>
+            </a>
+
+            <!-- 右欄 5 -->
+            <a href="https://register.vghtc.gov.tw/register/regDocSchedule.jsp?init=init&section=NS&drno=6674A" target="_blank" class="media-card">
+                <span class="media-title">崔源生醫師門診時間與網路掛號系統</span>
+                <span class="source">台中榮總掛號系統</span>
+            </a>
         </div>
-      </article>
+    </section>
 
-      <article id="article-2" class="content-article">
-        <h3 class="article-title">單元二：顱內動脈瘤：腦中的不定時炸彈</h3>
-        <div class="article-body">
-          <h4>什麼是顱內動脈瘤？</h4>
-          <p>顱內動脈瘤<strong>並非惡性腫瘤</strong>，而是腦動脈壁因為管壁結構脆弱，在血流長期衝擊下膨出的一個「血管血泡」[cite: 5]。未破裂時通常無症狀，但若血管壁承受不住壓力而破裂，會引發嚴重的<strong>蜘蛛網膜下腔出血（SAH）</strong>，死亡率極高[cite: 5]。</p>
+    <!-- 4. 腦血管衛教單元 -->
+    <section id="brain-health">
+        <h2><i class="fa-solid fa-brain"></i> 腦血管衛教單元</h2>
+        <div class="grid-list">
+            
+            <!-- 衛教文章 1 -->
+            <details class="card-item-clickable">
+                <summary class="card-summary">
+                    <div>
+                        <div class="card-header">
+                            <i class="fa-solid fa-stopwatch"></i>
+                            <strong>認識腦中風 FAST 口訣</strong>
+                        </div>
+                        <p class="card-body-text">臉歪(Face)、手軟(Arm)、大舌頭(Speech)、記下時間(Time)，把握黃金救援期[cite: 10]。</p>
+                    </div>
+                    <div class="card-action">點擊展開／收合衛教文章 <i class="fa-solid fa-chevron-down"></i></div>
+                </summary>
+                <div class="article-content">
+                    <h4>什麼是急性腦中風？</h4>
+                    <p>急性腦中風是腦血管突發性的阻塞（缺血性中風，約佔 70-80%）或破裂（出血性中風，約佔 20-30%），導致腦細胞缺氧壞死[cite: 5]。腦細胞一旦缺血，每分鐘就會死亡近 200 萬個[cite: 4]！</p>
 
-          <h4>發現未破裂動脈瘤，該怎麼辦？</h4>
-          <p>絕大多數未破裂動脈瘤是在健康檢查（如 MRI 腦血管攝影）時偶然發現[cite: 6]。醫師會綜合評估以下因素決定治療策略[cite: 6]：</p>
-          <ul>
-            <li><strong>臨床追蹤策略：</strong> 若動脈瘤較小（如 &lt; 3~7 mm）、形狀規則且無症狀，可先透過定期影像（MRA 或 CTA）追蹤，並嚴格控制血壓[cite: 6, 7]。</li>
-            <li><strong>手術干預時機：</strong> 若動脈瘤大於 5-7 mm、形狀不規則（有不規則突起）、部位風險高（如前交通動脈或後循環）或有動脈瘤家族史，建議積極治療[cite: 6, 7]。</li>
-          </ul>
+                    <h4>搶救黃金期：FAST 口訣快速辨識</h4>
+                    <ul>
+                        <li><strong>F - Face (臉歪)：</strong> 請對方露齒微笑，觀察兩側臉部表情是否不對稱、嘴歪眼斜[cite: 4, 10]。</li>
+                        <li><strong>A - Arm (手軟)：</strong> 請對方雙手平舉向前，觀察是否有單側手臂無力、垂落[cite: 4, 10]。</li>
+                        <li><strong>S - Speech (大舌頭)：</strong> 請對方說一句簡單的話，聽聽看是否口齒不清、說不出來或無法理解語意[cite: 4, 10]。</li>
+                        <li><strong>T - Time (記下時間)：</strong> <strong>只要出現上述任一症狀，立刻記下發作時間，並撥打 119 送醫！</strong>[cite: 4, 10]</li>
+                    </ul>
 
-          <h4>兩大主流治療方式比一比</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>治療方式</th>
-                <th>開顱夾閉手術 (Surgical Clipping)</th>
-                <th>微創血管內栓塞術 (Endovascular Coiling)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>原理</strong></td>
-                <td>透過開顱手術，直接在動脈瘤頸部夾上鈦合金夾，阻斷血流進入[cite: 6]。</td>
-                <td>從鼠蹊部股動脈穿刺，將微導管延伸至腦動脈瘤內填入白金線圈[cite: 6]。</td>
-              </tr>
-              <tr>
-                <td><strong>優點</strong></td>
-                <td>復發率極低，適用於分叉處或寬頸動脈瘤[cite: 6]。</td>
-                <td>微創無開顱傷口、恢復快、住院天數短[cite: 6]。</td>
-              </tr>
-              <tr>
-                <td><strong>進階技術</strong></td>
-                <td>可結合神經航向導航與微創小傷口切口[cite: 6]。</td>
-                <td>可搭配<strong>密網導流支架（Flow Diverter）</strong>治療難治型或巨大動脈瘤[cite: 6]。</td>
-              </tr>
-            </tbody>
-          </table>
+                    <div class="article-box">
+                        <strong>💡 急性急救關鍵治療：</strong>
+                        <ul>
+                            <li><strong>靜脈溶栓（iv t-PA）：</strong> 發作 3～4.5 小時內，經評估可用藥溶解血栓[cite: 4, 6]。</li>
+                            <li><strong>微創動脈導管機械取栓術：</strong> 發作 6～24 小時內，經 CT/MRI 影像評估具可拯救腦組織者，可透過微創導管伸入腦血管將血塊取出[cite: 4, 6]。</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 衛教文章 2 -->
+            <details class="card-item-clickable">
+                <summary class="card-summary">
+                    <div>
+                        <div class="card-header">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <strong>顱內動脈瘤：腦中的不定時炸彈</strong>
+                        </div>
+                        <p class="card-body-text">解析未破裂動脈瘤之追蹤策略、開顱夾閉與微創栓塞手術之評估選擇[cite: 10]。</p>
+                    </div>
+                    <div class="card-action">點擊展開／收合衛教文章 <i class="fa-solid fa-chevron-down"></i></div>
+                </summary>
+                <div class="article-content">
+                    <h4>什麼是顱內動脈瘤？</h4>
+                    <p>顱內動脈瘤<strong>並非惡性腫瘤</strong>，而是腦動脈壁因為管壁結構脆弱，在血流長期衝擊下膨出的一個「血管血泡」[cite: 5]。未破裂時通常無症狀，但若血管壁承受不住壓力而破裂，會引發嚴重的<strong>蜘蛛網膜下腔出血（SAH）</strong>，死亡率極高[cite: 5]。</p>
+
+                    <h4>發現未破裂動脈瘤，該怎麼辦？</h4>
+                    <ul>
+                        <li><strong>臨床追蹤策略：</strong> 若動脈瘤較小（如 &lt; 3~7 mm）、形狀規則且無症狀，可先透過定期影像（MRA 或 CTA）追蹤，並嚴格控制血壓[cite: 6, 7]。</li>
+                        <li><strong>手術干預時機：</strong> 若動脈瘤大於 5-7 mm、形狀不規則（有不規則突起）、部位風險高（如前交通動脈或後循環）或有動脈瘤家族史，建議積極治療[cite: 6, 7]。</li>
+                    </ul>
+
+                    <h4>兩大主流治療方式比一比</h4>
+                    <table class="article-table">
+                        <thead>
+                            <tr>
+                                <th>治療方式</th>
+                                <th>開顱夾閉手術</th>
+                                <th>微創血管內栓塞術</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>原理</strong></td>
+                                <td>開顱直接在動脈瘤頸部夾上鈦合金夾，阻斷血流[cite: 6]。</td>
+                                <td>經鼠蹊部股動脈穿刺，導管延伸至瘤內填入白金線圈[cite: 6]。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>優點</strong></td>
+                                <td>復發率極低，適用於分叉處或寬頸動脈瘤[cite: 6]。</td>
+                                <td>微創無開顱傷口、恢復快、住院天數短[cite: 6]。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <!-- 衛教文章 3 -->
+            <details class="card-item-clickable">
+                <summary class="card-summary">
+                    <div>
+                        <div class="card-header">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <strong>頸動脈狹窄與腦缺血預防</strong>
+                        </div>
+                        <p class="card-body-text">認識頸動脈斑塊形成原因，血管超音波檢查與支架置放手術須知[cite: 10]。</p>
+                    </div>
+                    <div class="card-action">點擊展開／收合衛教文章 <i class="fa-solid fa-chevron-down"></i></div>
+                </summary>
+                <div class="article-content">
+                    <h4>為什麼頸動脈狹窄會引發腦中風？</h4>
+                    <p>頸動脈是心臟輸送血液至腦部最主要的幹道[cite: 5]。隨著年齡增長或高血壓、高血脂、糖尿病、抽菸等因子，血管壁會逐漸堆積脂肪斑塊（粥狀硬化），導致狹窄[cite: 7]。</p>
+                    <ul>
+                        <li><strong>狹窄減少腦部血流量：</strong> 引發慢性腦缺血[cite: 5]。</li>
+                        <li><strong>斑塊破裂形成血栓：</strong> 血栓掉落至腦內大、小血管，直接引發缺血性腦中風[cite: 4, 5]。</li>
+                    </ul>
+
+                    <h4>篩檢工具：頸動脈超音波</h4>
+                    <p>無輻射、無侵入性，可清楚評估血管內膜厚度（IMT）、測量狹窄程度及斑塊品質[cite: 6, 10]。自由健康網及醫學會均建議高風險族群定期檢查[cite: 6, 7]。</p>
+
+                    <h4>治療與保健須知</h4>
+                    <ol>
+                        <li><strong>藥物與生活保健：</strong> 服用抗血小板藥物（如阿斯匹靈）[cite: 6]；控管「三高」（血壓 &lt; 140/90 mmHg、壞膽固醇 &lt; 100 mg/dL）[cite: 7]；戒菸、限鹽、維持運動[cite: 7]。</li>
+                        <li><strong>頸動脈支架置放術（CAS）：</strong> 經由微創導管置入金屬支架撐開狹窄血管，恢復腦部正常血流[cite: 6]。</li>
+                    </ol>
+                </div>
+            </details>
+
         </div>
-      </article>
+    </section>
 
-      <article id="article-3" class="content-article">
-        <h3 class="article-title">單元三：頸動脈狹窄與腦缺血預防</h3>
-        <div class="article-body">
-          <h4>為什麼頸動脈狹窄會引發腦中風？</h4>
-          <p>頸動脈是心臟輸送血液至腦部最主要的幹道[cite: 5]。隨著年齡增長，加上高血壓、高血脂、糖尿病或抽菸等因子，血管壁會逐漸堆積脂肪斑塊（粥狀硬化），導致血管腔狹窄[cite: 7]。</p>
-          <ul>
-            <li><strong>狹窄減少腦部血流量：</strong> 引發慢性腦缺血[cite: 5]。</li>
-            <li><strong>斑塊破裂形成血栓：</strong> 血栓隨血流掉落至腦內大、小血管，直接引發缺血性腦中風[cite: 4, 5]。</li>
-          </ul>
+    <!-- 5. 脊椎衛教單元 -->
+    <section id="spine-health">
+        <h2><i class="fa-solid fa-bone"></i> 脊椎衛教單元</h2>
+        <div class="grid-list">
+            <a href="https://www.google.com/search?q=頸椎間盤突出+微創手術" target="_blank" class="card-item-clickable" style="text-decoration:none;">
+                <div style="padding:18px 20px;">
+                    <div class="card-header">
+                        <i class="fa-solid fa-child-reaching"></i>
+                        <strong>頸椎壓迫與手麻疼痛</strong>
+                    </div>
+                    <p class="card-body-text">談頸椎間盤突出引發之上肢麻痛，從物理復健保守治療到微創手術之療程說明。</p>
+                    <div class="card-action">搜尋更多衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </a>
 
-          <h4>篩檢工具：頸動脈超音波</h4>
-          <p>頸動脈超音波是<strong>無輻射、無侵入性、快速且安全</strong>的非侵入性檢查[cite: 6, 10]：</p>
-          <ul>
-            <li>可清楚評估血管內膜厚度（IMT）[cite: 6]。</li>
-            <li>測量血管狹窄程度（狹窄百分比）[cite: 6]。</li>
-            <li>評估斑塊品質（軟斑塊、硬化斑塊或不穩定潰瘍斑塊）[cite: 6]。</li>
-          </ul>
+            <a href="https://www.google.com/search?q=坐骨神經痛+腰椎微創" target="_blank" class="card-item-clickable" style="text-decoration:none;">
+                <div style="padding:18px 20px;">
+                    <div class="card-header">
+                        <i class="fa-solid fa-person-walking"></i>
+                        <strong>坐骨神經痛與腰椎退化</strong>
+                    </div>
+                    <p class="card-body-text">日常姿勢調整、核心肌群訓練與腰椎微創神經減壓手術介紹。</p>
+                    <div class="card-action">搜尋更多衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </a>
 
-          <h4>治療與保健須知</h4>
-          <ol>
-            <li>
-              <strong>藥物與生活保健（狹窄 &lt; 50-70% 或無症狀）：</strong>
-              <p>服用抗血小板藥物（如阿斯匹靈）預防血栓形成[cite: 6]；嚴格控管「三高」（血壓 &lt; 140/90 mmHg、壞膽固醇 LDL-C &lt; 100 mg/dL）[cite: 7]；戒菸、限鹽、維持規律運動[cite: 7]。</p>
-            </li>
-            <li>
-              <strong>頸動脈支架置放術（CAS, 狹窄 &gt; 70% 或有症狀狹窄 &gt; 60%）：</strong>
-              <p>經由股動脈導管延伸至頸部狹窄處，利用保護傘捕捉掉落斑塊，並置入金屬支架撐開狹窄血管，恢復腦部正常血流[cite: 6]。術後需按時服用雙重抗血小板藥物，並定期回診進行超音波追蹤[cite: 6]。</p>
-            </li>
-          </ol>
+            <a href="https://www.google.com/search?q=脊椎壓迫性骨折+骨水泥灌注" target="_blank" class="card-item-clickable" style="text-decoration:none;">
+                <div style="padding:18px 20px;">
+                    <div class="card-header">
+                        <i class="fa-solid fa-kit-medical"></i>
+                        <strong>骨質疏鬆與脊椎壓迫性骨折</strong>
+                    </div>
+                    <p class="card-body-text">高齡壓迫性骨折疼痛處置、微創灌骨水泥（脊椎成形術）及術後骨質疏鬆照護。</p>
+                    <div class="card-action">搜尋更多衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </a>
         </div>
-      </article>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- 雙欄媒體報導 -->
-  <section id="media" style="background-color: #f1f5f9;">
-    <div class="container">
-      <h2 class="section-title">📰 媒體專訪與報導</h2>
-      <div class="media-grid">
+    <!-- 6. 學術發表與參考文獻 -->
+    <section id="references">
+        <h2><i class="fa-solid fa-book-bookmark"></i> 學術發表與參考文獻</h2>
         
-        <div class="media-card">
-          <h3>精準醫療神救援！動脈取栓救回急性腦中風患者</h3>
-          <div class="media-meta">健康醫療網 | 專訪報導</div>
-          <p>深入解析急性缺血性腦中風治療演進，透過導管動脈取栓技術，搶救缺血腦細胞[cite: 4, 6]。</p>
-          <a href="https://www.healthnews.com.tw" target="_blank" class="media-link">閱讀完整報導 &rarr;</a>
+        <!-- PubMed 直達連線按鈕區 -->
+        <div class="pubmed-box">
+            <div>
+                <strong style="font-size: 1.05rem; color: var(--secondary-color);">PubMed 美國國家生物技術資訊中心論文資料庫</strong>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">收錄崔源生醫師（Tsuei YS）於國際知名神經外科及腦血管醫學期刊發表之研究著作與論文清單。</p>
+            </div>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=tsuei+ys&size=50" target="_blank" class="pubmed-btn">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> 檢視 PubMed 論文清單 (Tsuei YS)
+            </a>
         </div>
 
-        <div class="media-card">
-          <h3>腦中不定時炸彈！腦動脈瘤微創栓塞手術新趨勢</h3>
-          <div class="media-meta">衛教新聞 | 專題採訪</div>
-          <p>介紹未破裂動脈瘤篩檢與現代密網導流支架微創手術，為患者提供安全有保障的治療選擇[cite: 6]。</p>
-          <a href="https://www.healthnews.com.tw" target="_blank" class="media-link">閱讀完整報導 &rarr;</a>
-        </div>
+        <!-- 代表性學術論文參考文獻列表 -->
+        <ul class="ref-list">
+            <li class="ref-item">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/25164693/" target="_blank" class="ref-title">
+                    • An acute cerebral venous sinus thrombosis
+                </a>
+                <div class="ref-meta">
+                    <strong>Tsuei YS</strong>, et al. | Department of Neurosurgery, Taichung Veterans General Hospital | PMID: 25164693
+                </div>
+            </li>
 
-      </div>
-    </div>
-  </section>
+            <li class="ref-item">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/24867146/" target="_blank" class="ref-title">
+                    • A Case of Giant Thrombosed Persistent Primitive Trigeminal Artery
+                </a>
+                <div class="ref-meta">
+                    Chen WH, Tsai TH, Shen SC, Shen CC, <strong>Tsuei YS</strong>. | Clin Neuroradiol. | PMID: 24867146
+                </div>
+            </li>
 
-  <!-- 頁尾 -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 崔源生醫師 Yuang-Seng Tsuei, MD. All Rights Reserved.</p>
-    </div>
-  </footer>
+            <li class="ref-item">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/15813246/" target="_blank" class="ref-title">
+                    • Civilian gunshot wounds to the brain: experience in Taichung Veterans General Hospital
+                </a>
+                <div class="ref-meta">
+                    <strong>Tsuei YS</strong>, et al. | Department of Neurosurgery, Taichung Veterans General Hospital | PMID: 15813246
+                </div>
+            </li>
+
+            <li class="ref-item">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/20158467/" target="_blank" class="ref-title">
+                    • Characterization of endogenous neural progenitor cells after traumatic brain injury
+                </a>
+                <div class="ref-meta">
+                    <strong>Tsuei YS</strong>, Ko JL, et al. | Department of Neurosurgery, Taichung Veterans General Hospital | PMID: 20158467
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 2026 崔源生醫師 Yuang-Seng Tsuei, MD 版權所有 | 個人醫療官網</p>
+    </footer>
+</div>
 
 </body>
 </html>
