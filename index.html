@@ -183,14 +183,14 @@
             font-size: 1.05rem !important;
         }
 
-        /* 右下角按讚與留言統計專區 */
+        /* 主畫面第一區右下角：按讚數與留言按鈕專區 */
         .header-stats-badge {
             position: absolute;
             bottom: 15px;
             right: 25px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             z-index: 10;
         }
 
@@ -198,11 +198,11 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border: 1px solid #dcdfe6;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: bold;
             color: var(--secondary-color);
             text-decoration: none;
@@ -539,122 +539,7 @@
             color: var(--accent-color);
         }
 
-        /* 彈出留言視窗內的表單與列表樣式 */
-        .guestbook-form {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 12px;
-        }
-
-        .form-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .form-group label {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        .form-control {
-            padding: 10px 14px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(26, 86, 140, 0.1);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .btn-submit-comment {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            border: none;
-            padding: 10px 22px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-submit-comment:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-
-        .guestbook-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .comment-item {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .comment-author {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .comment-date {
-            font-size: 0.8rem;
-            color: #94a3b8;
-        }
-
-        .comment-text {
-            font-size: 0.93rem;
-            color: #475569;
-            line-height: 1.6;
-        }
-
-        .no-comment-tip {
-            text-align: center;
-            color: #94a3b8;
-            padding: 20px 0;
-            font-size: 0.95rem;
-        }
-
-        /* 彈出視窗 (Modal) 樣式 */
+        /* 彈出視窗 (Modal) 樣式 - 與主畫面風格一致 */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -662,38 +547,39 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(15, 35, 55, 0.55);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
         }
 
         .modal-content {
             background-color: #ffffff;
             border-radius: 12px;
-            max-width: 700px;
+            max-width: 750px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
             padding: 30px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
             animation: modalFadeIn 0.3s ease;
+            border: 1px solid #e1eaf0;
         }
 
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5rem;
-            color: #999;
+            top: 18px;
+            right: 18px;
+            font-size: 1.4rem;
+            color: #888;
             cursor: pointer;
             border: none;
             background: none;
@@ -707,16 +593,19 @@
         }
 
         .modal-close-btn:hover {
-            background-color: #f0f0f0;
+            background-color: #f0f4f8;
             color: #333;
         }
 
         .modal-body h3 {
             font-size: 1.35rem;
             color: var(--primary-color);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 2px solid #eff6ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .modal-body h4 {
@@ -861,9 +750,6 @@
                 flex-direction: column;
                 text-align: center;
             }
-            .form-row {
-                flex-direction: column;
-            }
             .header-stats-badge {
                 position: static;
                 margin-top: 15px;
@@ -893,8 +779,8 @@
                 text-align: center;
             }
         }
-        #modal-guestbook .modal-content { max-width: 760px; background: linear-gradient(115deg, #fff 58%, #edf5fa); border: 1px solid #e1eaf0; border-radius: 12px; box-shadow: 0 10px 30px rgba(15, 56, 93, 0.16); }
-        #modal-guestbook .waline-intro { margin: 0 0 14px; color: var(--text-muted); }
+        #modal-guestbook .modal-content { max-width: 850px; }
+        #modal-guestbook .waline-intro { margin: 0 0 14px; color: var(--text-muted); font-size: 0.93rem; }
         #modal-guestbook #waline { width: 100%; min-width: 0; }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
@@ -928,10 +814,10 @@
             <p>致力於提供最先進的腦血管介入手術、顯微開顱與複合式手術，守護患者腦與脊椎健康。</p>
         </div>
 
-        <!-- 留言由 Waline 提供，訪客可使用電子郵件留言 -->
+        <!-- 主畫面第一區右下角：按讚數（預設1個起算）與留言按鈕 -->
         <div class="header-stats-badge">
-            <button id="like-demo-button" class="stat-btn like-btn" type="button" onclick="addDemoLike()" aria-label="按讚">
-                <i class="fa-solid fa-thumbs-up"></i> <span id="like-demo-count">1</span>
+            <button class="stat-btn like-btn" type="button" onclick="toggleLike()" aria-label="按讚">
+                <i class="fa-solid fa-thumbs-up"></i> <span id="likeCount">1</span>
             </button>
             <button class="stat-btn comment-badge-btn" type="button" onclick="openModal('modal-guestbook')" aria-label="開啟留言視窗">
                 <i class="fa-solid fa-comments"></i> 留言
@@ -1268,17 +1154,18 @@
 
 <!-- ==================== 彈出視窗專區 (Modal Pop-ups) ==================== -->
 
-<!-- Modal 0: Waline 訪客留言 -->
+<!-- Modal 0: Waline 訪客留言（彈出視窗） -->
 <div id="modal-guestbook" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-guestbook')">
     <div class="modal-content waline-modal-content">
         <button class="modal-close-btn" onclick="closeModal('modal-guestbook')" aria-label="關閉留言視窗">&times;</button>
         <div class="modal-body">
-            <h3><i class="fa-solid fa-comments"></i> 留言與反應</h3>
-            <p class="waline-intro">只要填暱稱和留言即可送出；電子郵件選填，不必登入 GitHub。</p>
+            <h3><i class="fa-solid fa-comments"></i> 訪客留言交流專區</h3>
+            <p class="waline-intro">歡迎留下您的寶貴心聲或疑問！只要填寫稱呼即可送出，免註冊即可留言。</p>
             <div id="waline"></div>
         </div>
     </div>
 </div>
+
 <!-- Modal 1: 認識腦中風 FAST 口訣 -->
 <div id="modal-1" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-1')">
     <div class="modal-content">
@@ -1375,32 +1262,27 @@
 
 <!-- JS 互動腳本 -->
 <script>
-    const demoLikeStorageKey = 'web-home-demo-likes';
-    function initDemoLikeCount() {
-        const countElement = document.getElementById('like-demo-count');
-        if (!countElement) return;
-        try {
-            let count = Number(localStorage.getItem(demoLikeStorageKey));
-            if (!Number.isFinite(count) || count < 1) {
-                count = 1;
-                localStorage.setItem(demoLikeStorageKey, String(count));
-            }
-            countElement.textContent = String(count);
-        } catch (_) { countElement.textContent = '1'; }
+    let isLiked = false;
+
+    // 按讚點擊互動邏輯
+    function toggleLike() {
+        const likeCountEl = document.getElementById('likeCount');
+        let count = parseInt(likeCountEl.innerText) || 1;
+        if (!isLiked) {
+            likeCountEl.innerText = count + 1;
+            isLiked = true;
+        } else {
+            likeCountEl.innerText = count - 1;
+            isLiked = false;
+        }
     }
-    function addDemoLike() {
-        const countElement = document.getElementById('like-demo-count');
-        if (!countElement) return;
-        const nextCount = Math.max(1, Number(countElement.textContent) || 1) + 1;
-        countElement.textContent = String(nextCount);
-        try { localStorage.setItem(demoLikeStorageKey, String(nextCount)); } catch (_) {}
-    }
-    initDemoLikeCount();
+
+    // Waline 動態載入
     async function loadWaline() {
         const container = document.getElementById('waline');
         if (!container || container.dataset.loaded === 'true' || container.dataset.loading === 'true') return;
         container.dataset.loading = 'true';
-        container.innerHTML = '<p>留言系統載入中，請稍候。</p>';
+        container.innerHTML = '<p style="text-align:center; padding:20px; color:#888;">留言系統載入中，請稍候...</p>';
         try {
             const { init } = await import('https://unpkg.com/@waline/client@v3/dist/waline.js');
             container.innerHTML = '';
@@ -1411,16 +1293,17 @@
                 login: 'enable',
                 meta: ['nick', 'mail'],
                 requiredMeta: ['nick'],
-                reaction: false,
+                reaction: ['https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f44d.png'],
                 dark: 'auto'
             });
             container.dataset.loaded = 'true';
         } catch (error) {
             console.error('Waline 載入失敗：', error);
-            container.innerHTML = '<p>留言系統暫時無法載入，請確認網路連線後重新整理頁面再試。</p>';
+            container.innerHTML = '<p style="text-align:center; color:#c00;">留言系統暫時無法載入，請確認網絡後再試。</p>';
             container.dataset.loading = 'false';
         }
     }
+
     // 視窗開啟 / 關閉控制
     function openModal(modalId) {
         document.getElementById(modalId).style.display = 'flex';
@@ -1442,7 +1325,4 @@
 
 </body>
 </html>
-
-
-
-
+```<ElicitationsGroup><Elicitation>Need full index.html code update with Giscus?</Elicitation><Elicitation>Need assistance finding your GitHub Repo ID for Giscus?</Elicitation><Elicitation>Need step-by-step help setting up Giscus in GitHub?</Elicitation></ElicitationsGroup>
