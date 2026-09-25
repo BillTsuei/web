@@ -1271,7 +1271,7 @@
         <button class="modal-close-btn" onclick="closeModal('modal-guestbook')" aria-label="關閉留言視窗">&times;</button>
         <div class="modal-body">
             <h3><i class="fa-solid fa-comments"></i> 留言與反應</h3>
-            <p class="waline-intro">可直接填寫暱稱與電子郵件留言，不必登入 GitHub。也可選擇使用支援的社群帳號登入。</p>
+            <p class="waline-intro">只要填暱稱和留言即可送出；電子郵件選填，不必登入 GitHub。</p>
             <div id="waline"></div>
         </div>
     </div>
@@ -1385,8 +1385,9 @@
                 serverURL: 'https://waline-server-three-nu.vercel.app',
                 lang: 'zh-TW',
                 login: 'enable',
-                requiredMeta: ['nick', 'mail'],
-                reaction: true,
+                meta: ['nick', 'mail'],
+                requiredMeta: ['nick'],
+                reaction: ['https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f44d.png'],
                 dark: 'auto'
             });
             container.dataset.loaded = 'true';
@@ -1417,5 +1418,6 @@
 
 </body>
 </html>
+
 
 
