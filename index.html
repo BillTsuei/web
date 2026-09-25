@@ -221,6 +221,12 @@
             color: #e63946;
         }
 
+        .stat-btn.like-btn.liked {
+            background-color: #ffebee;
+            border-color: #e63946;
+            color: #e63946;
+        }
+
         .stat-btn.like-btn i {
             color: #e63946;
         }
@@ -539,7 +545,7 @@
             color: var(--accent-color);
         }
 
-        /* 彈出視窗 (Modal) 樣式 - 與主畫面風格一致 */
+        /* 彈出視窗 (Modal) 樣式 */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -814,9 +820,9 @@
             <p>致力於提供最先進的腦血管介入手術、顯微開顱與複合式手術，守護患者腦與脊椎健康。</p>
         </div>
 
-        <!-- 主畫面第一區右下角：按讚數（預設1個起算）與留言按鈕 -->
+        <!-- 主畫面第一區右下角：全網同步按讚數與留言按鈕 -->
         <div class="header-stats-badge">
-            <button class="stat-btn like-btn" type="button" onclick="toggleLike()" aria-label="按讚">
+            <button class="stat-btn like-btn" id="likeBtn" type="button" onclick="toggleLike()" aria-label="按讚">
                 <i class="fa-solid fa-thumbs-up"></i> <span id="likeCount">1</span>
             </button>
             <button class="stat-btn comment-badge-btn" type="button" onclick="openModal('modal-guestbook')" aria-label="開啟留言視窗">
@@ -1262,18 +1268,58 @@
 
 <!-- JS 互動腳本 -->
 <script>
-    let isLiked = false;
+    const API_KEY = "ys_tsuei_website_like_count_2026";
+    const API_URL = `https://api.countapi.xyz`;
 
-    // 按讚點擊互動邏輯
-    function toggleLike() {
+    // 初始化：載入真實的跨裝置按讚數 & 檢查本機是否已按讚
+    window.addEventListener('DOMContentLoaded', () => {
+        fetchLikeCount();
+        checkLikedStatus();
+    });
+
+    async function fetchLikeCount() {
+        try {
+            const res = await fetch(`${API_URL}/get/${API_KEY}/likes`);
+            const data = await res.json();
+            if (data && data.value !== undefined) {
+                // 基礎數字 + 真實點擊數，預設最低 1 讚
+                document.getElementById('likeCount').innerText = Math.max(1, data.value);
+            }
+        } catch (e) {
+            console.log('載入點擊計數失敗，維持預設數值');
+        }
+    }
+
+    function checkLikedStatus() {
+        const hasLiked = localStorage.getItem('user_has_liked_page');
+        const likeBtn = document.getElementById('likeBtn');
+        if (hasLiked) {
+            likeBtn.classList.add('liked');
+        }
+    }
+
+    // 按讚點擊互動邏輯 (限一次按讚，防止重複連擊)
+    async function toggleLike() {
+        const hasLiked = localStorage.getItem('user_has_liked_page');
+        if (hasLiked) {
+            alert('您已經按過讚囉！感謝您的支持！');
+            return;
+        }
+
         const likeCountEl = document.getElementById('likeCount');
-        let count = parseInt(likeCountEl.innerText) || 1;
-        if (!isLiked) {
-            likeCountEl.innerText = count + 1;
-            isLiked = true;
-        } else {
-            likeCountEl.innerText = count - 1;
-            isLiked = false;
+        const likeBtn = document.getElementById('likeBtn');
+        let currentLikes = parseInt(likeCountEl.innerText) || 1;
+
+        // 即時 UI 反應
+        likeCountEl.innerText = currentLikes + 1;
+        likeBtn.classList.add('liked');
+        localStorage.setItem('user_has_liked_page', 'true');
+
+        // 寫入雲端 CountAPI 伺服器
+        try {
+            await fetch(`${API_URL}/hit/${API_KEY}/likes`);
+        } catch (e) {
+            console.log('雲端同步失敗');
         }
     }
 
@@ -1325,4 +1371,3 @@
 
 </body>
 </html>
-```<ElicitationsGroup><Elicitation>Need full index.html code update with Giscus?</Elicitation><Elicitation>Need assistance finding your GitHub Repo ID for Giscus?</Elicitation><Elicitation>Need step-by-step help setting up Giscus in GitHub?</Elicitation></ElicitationsGroup>
