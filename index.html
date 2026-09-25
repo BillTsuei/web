@@ -84,9 +84,9 @@
         }
 
         .profile-info h1 .en-name {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: var(--text-muted);
-            font-weight: 400;
+            font-weight: 500;
             margin-left: 12px;
         }
 
@@ -343,47 +343,42 @@
             color: #ffffff;
         }
 
-        /* 普通可點擊卡片（衛教單元） */
-        .grid-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-        }
-
-        /* 摺疊衛教文章 (details / summary) 樣式 */
-        details.card-item-clickable {
-            background: var(--bg-color);
-            border-radius: 10px;
-            border-left: 5px solid var(--primary-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: all 0.25s ease;
-            overflow: hidden;
-        }
-
-        details.card-item-clickable[open] {
-            background: #ffffff;
-            border-left-color: var(--accent-color);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        }
-
-        summary.card-summary {
-            padding: 18px 20px;
-            cursor: pointer;
-            list-style: none;
+        /* 腦血管衛教單元：單排三卡片佈局 (Flexbox) */
+        .single-row-grid {
             display: flex;
-            flex-direction: column;
+            gap: 15px;
             justify-content: space-between;
         }
 
-        summary.card-summary::-webkit-details-marker {
-            display: none;
+        .single-row-grid .card-item-clickable {
+            flex: 1;
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            border-top: 1px solid #eef2f5;
+            border-right: 1px solid #eef2f5;
+            border-bottom: 1px solid #eef2f5;
+        }
+
+        .single-row-grid .card-item-clickable:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-left-color: var(--accent-color);
+            background: #ffffff;
         }
 
         .card-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         .card-header i {
@@ -392,7 +387,7 @@
             transition: color 0.2s ease;
         }
 
-        details[open] .card-header i {
+        .card-item-clickable:hover .card-header i {
             color: var(--accent-color);
         }
 
@@ -402,9 +397,10 @@
         }
 
         .card-body-text {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            line-height: 1.5;
         }
 
         .card-action {
@@ -415,59 +411,117 @@
             align-items: center;
             gap: 5px;
             align-self: flex-end;
+            margin-top: auto;
         }
 
-        details[open] .card-action {
+        .card-item-clickable:hover .card-action {
             color: var(--accent-color);
         }
 
-        /* 展開後的衛教文章內文區塊 */
-        .article-content {
-            padding: 0 20px 20px 20px;
-            border-top: 1px solid #eef2f5;
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: #444444;
-            line-height: 1.7;
+        /* 彈出視窗 (Modal) 樣式 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(3px);
         }
 
-        .article-content h4 {
-            font-size: 1.05rem;
+        .modal-content {
+            background-color: #ffffff;
+            border-radius: 12px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .modal-body h3 {
+            font-size: 1.35rem;
             color: var(--primary-color);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eff6ff;
+        }
+
+        .modal-body h4 {
+            font-size: 1.05rem;
+            color: var(--secondary-color);
             margin: 16px 0 8px 0;
         }
 
-        .article-content ul, .article-content ol {
-            padding-left: 20px;
+        .modal-body p, .modal-body ul, .modal-body ol {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.7;
             margin-bottom: 12px;
         }
 
-        .article-content li {
-            margin-bottom: 6px;
+        .modal-body ul, .modal-body ol {
+            padding-left: 20px;
         }
 
-        .article-box {
+        .modal-highlight-box {
             background-color: #eff6ff;
             border-left: 4px solid var(--primary-color);
             padding: 12px 16px;
             border-radius: 4px;
-            margin: 12px 0;
+            margin: 16px 0;
         }
 
-        .article-table {
+        .modal-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 12px 0;
+            margin: 16px 0;
             font-size: 0.9rem;
         }
 
-        .article-table th, .article-table td {
+        .modal-table th, .modal-table td {
             border: 1px solid #e2e8f0;
-            padding: 8px 12px;
+            padding: 10px 12px;
             text-align: left;
         }
 
-        .article-table th {
+        .modal-table th {
             background-color: #f8fafc;
         }
 
@@ -563,6 +617,12 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 820px) {
+            .single-row-grid {
+                flex-direction: column;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -789,122 +849,46 @@
         </div>
     </section>
 
-    <!-- 4. 腦血管衛教單元 -->
+    <!-- 4. 腦血管衛教單元 (單排三卡片 + 視窗彈窗) -->
     <section id="brain-health">
         <h2><i class="fa-solid fa-brain"></i> 腦血管衛教單元</h2>
-        <div class="grid-list">
+        <div class="single-row-grid">
             
-            <!-- 衛教文章 1 -->
-            <details class="card-item-clickable">
-                <summary class="card-summary">
-                    <div>
-                        <div class="card-header">
-                            <i class="fa-solid fa-stopwatch"></i>
-                            <strong>認識腦中風 FAST 口訣</strong>
-                        </div>
-                        <p class="card-body-text">臉歪(Face)、手軟(Arm)、大舌頭(Speech)、記下時間(Time)，把握黃金救援期[cite: 10]。</p>
+            <!-- 卡片 1 -->
+            <div class="card-item-clickable" onclick="openModal('modal-1')">
+                <div>
+                    <div class="card-header">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <strong>認識腦中風 FAST 口訣</strong>
                     </div>
-                    <div class="card-action">點擊展開／收合衛教文章 <i class="fa-solid fa-chevron-down"></i></div>
-                </summary>
-                <div class="article-content">
-                    <h4>什麼是急性腦中風？</h4>
-                    <p>急性腦中風是腦血管突發性的阻塞（缺血性中風，約佔 70-80%）或破裂（出血性中風，約佔 20-30%），導致腦細胞缺氧壞死[cite: 5]。腦細胞一旦缺血，每分鐘就會死亡近 200 萬個[cite: 4]！</p>
-
-                    <h4>搶救黃金期：FAST 口訣快速辨識</h4>
-                    <ul>
-                        <li><strong>F - Face (臉歪)：</strong> 請對方露齒微笑，觀察兩側臉部表情是否不對稱、嘴歪眼斜[cite: 4, 10]。</li>
-                        <li><strong>A - Arm (手軟)：</strong> 請對方雙手平舉向前，觀察是否有單側手臂無力、垂落[cite: 4, 10]。</li>
-                        <li><strong>S - Speech (大舌頭)：</strong> 請對方說一句簡單的話，聽聽看是否口齒不清、說不出來或無法理解語意[cite: 4, 10]。</li>
-                        <li><strong>T - Time (記下時間)：</strong> <strong>只要出現上述任一症狀，立刻記下發作時間，並撥打 119 送醫！</strong>[cite: 4, 10]</li>
-                    </ul>
-
-                    <div class="article-box">
-                        <strong>💡 急性急救關鍵治療：</strong>
-                        <ul>
-                            <li><strong>靜脈溶栓（iv t-PA）：</strong> 發作 3～4.5 小時內，經評估可用藥溶解血栓[cite: 4, 6]。</li>
-                            <li><strong>微創動脈導管機械取栓術：</strong> 發作 6～24 小時內，經 CT/MRI 影像評估具可拯救腦組織者，可透過微創導管伸入腦血管將血塊取出[cite: 4, 6]。</li>
-                        </ul>
-                    </div>
+                    <p class="card-body-text">臉歪(Face)、手軟(Arm)、大舌頭(Speech)、記下時間(Time)，把握黃金救援期[cite: 10]。</p>
                 </div>
-            </details>
+                <div class="card-action">閱讀文章 <i class="fa-solid fa-arrow-right"></i></div>
+            </div>
 
-            <!-- 衛教文章 2 -->
-            <details class="card-item-clickable">
-                <summary class="card-summary">
-                    <div>
-                        <div class="card-header">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <strong>顱內動脈瘤：腦中的不定時炸彈</strong>
-                        </div>
-                        <p class="card-body-text">解析未破裂動脈瘤之追蹤策略、開顱夾閉與微創栓塞手術之評估選擇[cite: 10]。</p>
+            <!-- 卡片 2 -->
+            <div class="card-item-clickable" onclick="openModal('modal-2')">
+                <div>
+                    <div class="card-header">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <strong>顱內動脈瘤：腦中不定時炸彈</strong>
                     </div>
-                    <div class="card-action">點擊展開／收合衛教文章 <i class="fa-solid fa-chevron-down"></i></div>
-                </summary>
-                <div class="article-content">
-                    <h4>什麼是顱內動脈瘤？</h4>
-                    <p>顱內動脈瘤<strong>並非惡性腫瘤</strong>，而是腦動脈壁因為管壁結構脆弱，在血流長期衝擊下膨出的一個「血管血泡」[cite: 5]。未破裂時通常無症狀，但若血管壁承受不住壓力而破裂，會引發嚴重的<strong>蜘蛛網膜下腔出血（SAH）</strong>，死亡率極高[cite: 5]。</p>
-
-                    <h4>發現未破裂動脈瘤，該怎麼辦？</h4>
-                    <ul>
-                        <li><strong>臨床追蹤策略：</strong> 若動脈瘤較小（如 &lt; 3~7 mm）、形狀規則且無症狀，可先透過定期影像（MRA 或 CTA）追蹤，並嚴格控制血壓[cite: 6, 7]。</li>
-                        <li><strong>手術干預時機：</strong> 若動脈瘤大於 5-7 mm、形狀不規則（有不規則突起）、部位風險高（如前交通動脈或後循環）或有動脈瘤家族史，建議積極治療[cite: 6, 7]。</li>
-                    </ul>
-
-                    <h4>兩大主流治療方式比一比</h4>
-                    <table class="article-table">
-                        <thead>
-                            <tr>
-                                <th>治療方式</th>
-                                <th>開顱夾閉手術</th>
-                                <th>微創血管內栓塞術</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>原理</strong></td>
-                                <td>開顱直接在動脈瘤頸部夾上鈦合金夾，阻斷血流[cite: 6]。</td>
-                                <td>經鼠蹊部股動脈穿刺，導管延伸至瘤內填入白金線圈[cite: 6]。</td>
-                            </tr>
-                            <tr>
-                                <td><strong>優點</strong></td>
-                                <td>復發率極低，適用於分叉處或寬頸動脈瘤[cite: 6]。</td>
-                                <td>微創無開顱傷口、恢復快、住院天數短[cite: 6]。</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p class="card-body-text">解析未破裂動脈瘤之追蹤策略、開顱夾閉與微創栓塞手術選擇[cite: 10]。</p>
                 </div>
-            </details>
+                <div class="card-action">閱讀文章 <i class="fa-solid fa-arrow-right"></i></div>
+            </div>
 
-            <!-- 衛教文章 3 -->
-            <details class="card-item-clickable">
-                <summary class="card-summary">
-                    <div>
-                        <div class="card-header">
-                            <i class="fa-solid fa-heart-pulse"></i>
-                            <strong>頸動脈狹窄與腦缺血預防</strong>
-                        </div>
-                        <p class="card-body-text">認識頸動脈斑塊形成原因，血管超音波檢查與支架置放手術須知[cite: 10]。</p>
+            <!-- 卡片 3 -->
+            <div class="card-item-clickable" onclick="openModal('modal-3')">
+                <div>
+                    <div class="card-header">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <strong>頸動脈狹窄與腦缺血預防</strong>
                     </div>
-                    <div class="card-action">點擊展開／收合衛教文章 <i class="fa-solid fa-chevron-down"></i></div>
-                </summary>
-                <div class="article-content">
-                    <h4>為什麼頸動脈狹窄會引發腦中風？</h4>
-                    <p>頸動脈是心臟輸送血液至腦部最主要的幹道[cite: 5]。隨著年齡增長或高血壓、高血脂、糖尿病、抽菸等因子，血管壁會逐漸堆積脂肪斑塊（粥狀硬化），導致狹窄[cite: 7]。</p>
-                    <ul>
-                        <li><strong>狹窄減少腦部血流量：</strong> 引發慢性腦缺血[cite: 5]。</li>
-                        <li><strong>斑塊破裂形成血栓：</strong> 血栓掉落至腦內大、小血管，直接引發缺血性腦中風[cite: 4, 5]。</li>
-                    </ul>
-
-                    <h4>篩檢工具：頸動脈超音波</h4>
-                    <p>無輻射、無侵入性，可清楚評估血管內膜厚度（IMT）、測量狹窄程度及斑塊品質[cite: 6, 10]。自由健康網及醫學會均建議高風險族群定期檢查[cite: 6, 7]。</p>
-
-                    <h4>治療與保健須知</h4>
-                    <ol>
-                        <li><strong>藥物與生活保健：</strong> 服用抗血小板藥物（如阿斯匹靈）[cite: 6]；控管「三高」（血壓 &lt; 140/90 mmHg、壞膽固醇 &lt; 100 mg/dL）[cite: 7]；戒菸、限鹽、維持運動[cite: 7]。</li>
-                        <li><strong>頸動脈支架置放術（CAS）：</strong> 經由微創導管置入金屬支架撐開狹窄血管，恢復腦部正常血流[cite: 6]。</li>
-                    </ol>
+                    <p class="card-body-text">認識頸動脈斑塊形成原因，血管超音波檢查與支架置放手術須知[cite: 10]。</p>
                 </div>
-            </details>
+                <div class="card-action">閱讀文章 <i class="fa-solid fa-arrow-right"></i></div>
+            </div>
 
         </div>
     </section>
@@ -912,38 +896,38 @@
     <!-- 5. 脊椎衛教單元 -->
     <section id="spine-health">
         <h2><i class="fa-solid fa-bone"></i> 脊椎衛教單元</h2>
-        <div class="grid-list">
+        <div class="single-row-grid">
             <a href="https://www.google.com/search?q=頸椎間盤突出+微創手術" target="_blank" class="card-item-clickable" style="text-decoration:none;">
-                <div style="padding:18px 20px;">
+                <div>
                     <div class="card-header">
                         <i class="fa-solid fa-child-reaching"></i>
                         <strong>頸椎壓迫與手麻疼痛</strong>
                     </div>
                     <p class="card-body-text">談頸椎間盤突出引發之上肢麻痛，從物理復健保守治療到微創手術之療程說明。</p>
-                    <div class="card-action">搜尋更多衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
                 </div>
+                <div class="card-action">搜尋衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
             </a>
 
             <a href="https://www.google.com/search?q=坐骨神經痛+腰椎微創" target="_blank" class="card-item-clickable" style="text-decoration:none;">
-                <div style="padding:18px 20px;">
+                <div>
                     <div class="card-header">
                         <i class="fa-solid fa-person-walking"></i>
                         <strong>坐骨神經痛與腰椎退化</strong>
                     </div>
                     <p class="card-body-text">日常姿勢調整、核心肌群訓練與腰椎微創神經減壓手術介紹。</p>
-                    <div class="card-action">搜尋更多衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
                 </div>
+                <div class="card-action">搜尋衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
             </a>
 
             <a href="https://www.google.com/search?q=脊椎壓迫性骨折+骨水泥灌注" target="_blank" class="card-item-clickable" style="text-decoration:none;">
-                <div style="padding:18px 20px;">
+                <div>
                     <div class="card-header">
                         <i class="fa-solid fa-kit-medical"></i>
-                        <strong>骨質疏鬆與脊椎壓迫性骨折</strong>
+                        <strong>骨質疏鬆與壓迫性骨折</strong>
                     </div>
-                    <p class="card-body-text">高齡壓迫性骨折疼痛處置、微創灌骨水泥（脊椎成形術）及術後骨質疏鬆照護。</p>
-                    <div class="card-action">搜尋更多衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
+                    <p class="card-body-text">高齡壓迫性骨折處置、微創灌骨水泥（脊椎成形術）及術後骨質疏鬆照護。</p>
                 </div>
+                <div class="card-action">搜尋衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
             </a>
         </div>
     </section>
@@ -1008,6 +992,121 @@
         <p>© 2026 崔源生醫師 Yuang-Seng Tsuei, MD 版權所有 | 個人醫療官網</p>
     </footer>
 </div>
+
+<!-- ==================== 腦血管衛教彈出視窗 (Modal Pop-ups) ==================== -->
+
+<!-- Modal 1: 認識腦中風 FAST 口訣 -->
+<div id="modal-1" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-1')">
+    <div class="modal-content">
+        <button class="modal-close-btn" onclick="closeModal('modal-1')">&times;</button>
+        <div class="modal-body">
+            <h3>認識腦中風 FAST 口訣</h3>
+            <h4>什麼是急性腦中風？</h4>
+            <p>急性腦中風是腦血管突發性的阻塞（缺血性中風，約佔 70-80%）或破裂（出血性中風，約佔 20-30%），導致腦細胞缺氧壞死[cite: 5]。腦細胞一旦缺血，每分鐘就會死亡近 200 萬個[cite: 4]！</p>
+
+            <h4>搶救黃金期：FAST 口訣快速辨識</h4>
+            <ul>
+                <li><strong>F - Face (臉歪)：</strong> 請對方露齒微笑，觀察兩側臉部表情是否不對稱、嘴歪眼斜[cite: 4, 10]。</li>
+                <li><strong>A - Arm (手軟)：</strong> 請對方雙手平舉向前，觀察是否有單側手臂無力、垂落[cite: 4, 10]。</li>
+                <li><strong>S - Speech (大舌頭)：</strong> 請對方說一句簡單的話，聽聽看是否口齒不清、說不出來或無法理解語意[cite: 4, 10]。</li>
+                <li><strong>T - Time (記下時間)：</strong> <strong>只要出現上述任一症狀，立刻記下發作時間，並撥打 119 送醫！</strong>[cite: 4, 10]</li>
+            </ul>
+
+            <div class="modal-highlight-box">
+                <strong>💡 急性急救關鍵治療：</strong>
+                <ul>
+                    <li><strong>靜脈溶栓（iv t-PA）：</strong> 發作 3～4.5 小時內，經評估可用藥溶解血栓[cite: 4, 6]。</li>
+                    <li><strong>微創動脈導管機械取栓術：</strong> 發作 6～24 小時內，經 CT/MRI 影像評估具可拯救腦組織者，可透過微創導管伸入腦血管將血塊取出[cite: 4, 6]。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2: 顱內動脈瘤 -->
+<div id="modal-2" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-2')">
+    <div class="modal-content">
+        <button class="modal-close-btn" onclick="closeModal('modal-2')">&times;</button>
+        <div class="modal-body">
+            <h3>顱內動脈瘤：腦中的不定時炸彈</h3>
+            <h4>什麼是顱內動脈瘤？</h4>
+            <p>顱內動脈瘤<strong>並非惡性腫瘤</strong>，而是腦動脈壁因為管壁結構脆弱，在血流長期衝擊下膨出的一個「血管血泡」[cite: 5]。未破裂時通常無症狀，但若血管壁承受不住壓力而破裂，會引發嚴重的<strong>蜘蛛網膜下腔出血（SAH）</strong>，死亡率極高[cite: 5]。</p>
+
+            <h4>發現未破裂動脈瘤，該怎麼辦？</h4>
+            <ul>
+                <li><strong>臨床追蹤策略：</strong> 若動脈瘤較小（如 &lt; 3~7 mm）、形狀規則且無症狀，可先透過定期影像（MRA 或 CTA）追蹤，並嚴格控制血壓[cite: 6, 7]。</li>
+                <li><strong>手術干預時機：</strong> 若動脈瘤大於 5-7 mm、形狀不規則（有不規則突起）、部位風險高（如前交通動脈或後循環）或有動脈瘤家族史，建議積極治療[cite: 6, 7]。</li>
+            </ul>
+
+            <h4>兩大主流治療方式比一比</h4>
+            <table class="modal-table">
+                <thead>
+                    <tr>
+                        <th>治療方式</th>
+                        <th>開顱夾閉手術</th>
+                        <th>微創血管內栓塞術</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>原理</strong></td>
+                        <td>開顱直接在動脈瘤頸部夾上鈦合金夾，阻斷血流進入[cite: 6]。</td>
+                        <td>經鼠蹊部股動脈穿刺，導管延伸至瘤內填入白金線圈[cite: 6]。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>優點</strong></td>
+                        <td>復發率極低，適用於分叉處或寬頸動脈瘤[cite: 6]。</td>
+                        <td>微創無開顱傷口、恢復快、住院天數短[cite: 6]。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3: 頸動脈狹窄與腦缺血預防 -->
+<div id="modal-3" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-3')">
+    <div class="modal-content">
+        <button class="modal-close-btn" onclick="closeModal('modal-3')">&times;</button>
+        <div class="modal-body">
+            <h3>頸動脈狹窄與腦缺血預防</h3>
+            <h4>為什麼頸動脈狹窄會引發腦中風？</h4>
+            <p>頸動脈是心臟輸送血液至腦部最主要的幹道[cite: 5]。隨著年齡增長或高血壓、高血脂、糖尿病、抽菸等因子，血管壁會逐漸堆積脂肪斑塊（粥狀硬化），導致血管腔狹窄[cite: 7]。</p>
+            <ul>
+                <li><strong>狹窄減少腦部血流量：</strong> 引發慢性腦缺血[cite: 5]。</li>
+                <li><strong>斑塊破裂形成血栓：</strong> 血栓隨血流掉落至腦內大、小血管，直接引發缺血性腦中風[cite: 4, 5]。</li>
+            </ul>
+
+            <h4>篩檢工具：頸動脈超音波</h4>
+            <p>無輻射、無侵入性，可清楚評估血管內膜厚度（IMT）、測量狹窄程度及斑塊品質[cite: 6, 10]。自由健康網與專家皆建議三高風險族群定期檢查[cite: 6, 7]。</p>
+
+            <h4>治療與保健須知</h4>
+            <ol>
+                <li><strong>藥物與生活保健：</strong> 服用抗血小板藥物（如阿斯匹靈）預防血栓[cite: 6]；控管「三高」（血壓 &lt; 140/90 mmHg、壞膽固醇 &lt; 100 mg/dL）[cite: 7]；戒菸、限鹽、維持運動[cite: 7]。</li>
+                <li><strong>頸動脈支架置放術（CAS）：</strong> 經由微創導管置入金屬支架撐開狹窄血管，恢復腦部正常血流[cite: 6]。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- JS 視窗控制腳本 -->
+<script>
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // 禁止背景滾動
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+        document.body.style.overflow = 'auto'; // 恢復背景滾動
+    }
+
+    function closeModalOnOverlay(event, modalId) {
+        if (event.target.classList.contains('modal-overlay')) {
+            closeModal(modalId);
+        }
+    }
+</script>
 
 </body>
 </html>
