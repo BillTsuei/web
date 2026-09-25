@@ -645,6 +645,23 @@
                 text-align: center;
             }
         }
+
+        /* Visual refresh: clearer hierarchy, responsive image cards, and accessible focus states */
+        body { background: radial-gradient(ellipse at 10% 0%, #e7f2f8 0, transparent 38%), var(--bg-color); }
+        .container { max-width: 1120px; }
+        header { position: relative; overflow: hidden; border: 1px solid #e1eaf0; background: linear-gradient(115deg,#fff 58%,#edf5fa); }
+        header:after { content: ""; position:absolute; width:220px; height:220px; right:-85px; top:-90px; border:30px solid rgba(26,86,140,.06); border-radius:50%; pointer-events:none; }
+        .profile-img { object-fit: cover; }
+        section { border: 1px solid #e5edf2; transition: transform .2s ease, box-shadow .2s ease; }
+        section h2 { padding-bottom: 12px; border-bottom: 1px solid #e8eef2; }
+        .card-item-clickable { overflow:hidden; padding:0; border:1px solid #e1eaf0; transition:transform .2s ease,box-shadow .2s ease; }
+        .card-item-clickable:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(30,76,108,.13); }
+        .card-illustration { display:block; width:100%; height:132px; object-fit:cover; }
+        .card-content { padding:18px 18px 8px; }`r`n        .card-item-clickable > div:first-of-type { padding:18px 18px 8px; }
+        .card-action { padding:0 18px 17px; }
+        a:focus-visible, button:focus-visible, .card-item-clickable:focus-visible { outline:3px solid #e0a743; outline-offset:3px; }
+        @media (max-width:700px) { header { padding:26px 22px; gap:22px; } .card-illustration { height:118px; } }
+        @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; } }
     </style>
 </head>
 <body>
@@ -856,6 +873,7 @@
             
             <!-- 卡片 1 -->
             <div class="card-item-clickable" onclick="openModal('modal-1')">
+                <img class="card-illustration" src="media/fast.svg" alt="腦血管衛教示意插畫" loading="lazy">
                 <div>
                     <div class="card-header">
                         <i class="fa-solid fa-stopwatch"></i>
@@ -868,6 +886,7 @@
 
             <!-- 卡片 2 -->
             <div class="card-item-clickable" onclick="openModal('modal-2')">
+                <img class="card-illustration" src="media/aneurysm.svg" alt="腦血管衛教示意插畫" loading="lazy">
                 <div>
                     <div class="card-header">
                         <i class="fa-solid fa-triangle-exclamation"></i>
@@ -880,6 +899,7 @@
 
             <!-- 卡片 3 -->
             <div class="card-item-clickable" onclick="openModal('modal-3')">
+                <img class="card-illustration" src="media/carotid.svg" alt="腦血管衛教示意插畫" loading="lazy">
                 <div>
                     <div class="card-header">
                         <i class="fa-solid fa-heart-pulse"></i>
@@ -897,7 +917,8 @@
     <section id="spine-health">
         <h2><i class="fa-solid fa-bone"></i> 脊椎衛教單元</h2>
         <div class="single-row-grid">
-            <a href="https://www.google.com/search?q=頸椎間盤突出+微創手術" target="_blank" class="card-item-clickable" style="text-decoration:none;">
+            <a href="https://www.google.com/search?q=頸椎間盤突出+微創手術" target="_blank" rel="noopener noreferrer" class="card-item-clickable" style="text-decoration:none;">
+                <img class="card-illustration" src="media/spine.svg" alt="脊椎結構示意插畫" loading="lazy">
                 <div>
                     <div class="card-header">
                         <i class="fa-solid fa-child-reaching"></i>
@@ -908,7 +929,8 @@
                 <div class="card-action">搜尋衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
             </a>
 
-            <a href="https://www.google.com/search?q=坐骨神經痛+腰椎微創" target="_blank" class="card-item-clickable" style="text-decoration:none;">
+            <a href="https://www.google.com/search?q=坐骨神經痛+腰椎微創" target="_blank" rel="noopener noreferrer" class="card-item-clickable" style="text-decoration:none;">
+                <img class="card-illustration" src="media/spine.svg" alt="脊椎結構示意插畫" loading="lazy">
                 <div>
                     <div class="card-header">
                         <i class="fa-solid fa-person-walking"></i>
@@ -919,7 +941,8 @@
                 <div class="card-action">搜尋衛教資訊 <i class="fa-solid fa-arrow-right"></i></div>
             </a>
 
-            <a href="https://www.google.com/search?q=脊椎壓迫性骨折+骨水泥灌注" target="_blank" class="card-item-clickable" style="text-decoration:none;">
+            <a href="https://www.google.com/search?q=脊椎壓迫性骨折+骨水泥灌注" target="_blank" rel="noopener noreferrer" class="card-item-clickable" style="text-decoration:none;">
+                <img class="card-illustration" src="media/spine.svg" alt="脊椎結構示意插畫" loading="lazy">
                 <div>
                     <div class="card-header">
                         <i class="fa-solid fa-kit-medical"></i>
