@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>腦血管衛教專區 | drtsuei-tw.com</title>
+  <title>崔源生醫師 Yuang-Seng Tsuei, MD | 腦血管與微創手術專家</title>
   <style>
     :root {
       --primary-color: #1a4b84;
@@ -28,26 +28,154 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
-      padding: 20px;
     }
 
     .container {
       max-width: 1100px;
       margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 頂部導覽列 */
+    header {
+      background-color: var(--card-bg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Hero 個人簡介區塊 */
+    .hero {
+      padding: 60px 0 40px;
+      background: linear-gradient(135deg, #eef2f7 0%, #ffffff 100%);
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      border: 4px solid #fff;
+      flex-shrink: 0;
+    }
+
+    .hero-text h1 {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .hero-text .en-name {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-left: 10px;
+    }
+
+    .hero-text h2 {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero-text p {
+      color: #4a5568;
+      margin-bottom: 20px;
+      max-width: 650px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary-color);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #1a62ca;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--secondary-color);
+      color: var(--secondary-color);
+    }
+
+    .btn-outline:hover {
+      background-color: #eff6ff;
+    }
+
+    /* 通用章節標題 */
+    section {
+      padding: 50px 0;
     }
 
     .section-title {
       font-size: 1.8rem;
       color: var(--primary-color);
-      margin-bottom: 24px;
+      margin-bottom: 30px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
+    /* 腦血管衛教區塊 */
     .education-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
       margin-bottom: 40px;
     }
@@ -55,7 +183,7 @@
     .edu-card {
       background: var(--card-bg);
       border-radius: var(--border-radius);
-      padding: 28px;
+      padding: 24px;
       box-shadow: var(--shadow);
       border-left: 5px solid var(--secondary-color);
       display: flex;
@@ -80,7 +208,7 @@
     }
 
     .card-title {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #1e293b;
     }
@@ -89,7 +217,6 @@
       font-size: 0.95rem;
       color: var(--text-muted);
       margin-bottom: 20px;
-      flex-grow: 1;
     }
 
     .btn-read {
@@ -106,56 +233,37 @@
       text-decoration: none;
     }
 
-    .btn-read:hover {
-      text-decoration: underline;
-    }
-
-    /* 詳細文章區域 */
+    /* 衛教文章詳細展現 */
     .content-article {
       background: var(--card-bg);
       border-radius: var(--border-radius);
-      padding: 32px;
-      margin-bottom: 32px;
+      padding: 28px;
+      margin-bottom: 24px;
       box-shadow: var(--shadow);
     }
 
     .article-title {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: var(--primary-color);
       margin-bottom: 16px;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
       border-bottom: 2px solid #f1f5f9;
     }
 
     .article-body h4 {
       font-size: 1.1rem;
       color: #334155;
-      margin: 20px 0 10px 0;
+      margin: 16px 0 8px 0;
     }
 
-    .article-body p, .article-body ul {
-      margin-bottom: 12px;
-    }
-
-    .article-body ul {
+    .article-body ul, .article-body ol {
       padding-left: 20px;
-    }
-
-    .article-body li {
-      margin-bottom: 6px;
+      margin-bottom: 12px;
     }
 
     .highlight-box {
       background-color: #eff6ff;
       border-left: 4px solid var(--secondary-color);
-      padding: 16px;
-      border-radius: 4px;
-      margin: 16px 0;
-    }
-
-    .danger-box {
-      background-color: #fef2f2;
-      border-left: 4px solid var(--accent-color);
       padding: 16px;
       border-radius: 4px;
       margin: 16px 0;
@@ -176,171 +284,281 @@
 
     th {
       background-color: #f8fafc;
+    }
+
+    /* 媒體報導（雙欄排版） */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 24px;
+    }
+
+    .media-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .media-card h3 {
+      font-size: 1.15rem;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .media-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .media-card p {
+      font-size: 0.95rem;
+      color: #4a5568;
+      margin-bottom: 16px;
+    }
+
+    .media-link {
+      color: var(--secondary-color);
+      text-decoration: none;
       font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .media-link:hover {
+      text-decoration: underline;
+    }
+
+    /* 頁尾 */
+    footer {
+      background-color: #1e293b;
+      color: #94a3b8;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 768px) {
-      body { padding: 12px; }
-      .content-article { padding: 20px; }
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
+  <!-- 頂部選單 -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">崔源生醫師 官網</a>
+      <ul class="nav-links">
+        <li><a href="#about">關於醫師</a></li>
+        <li><a href="#education">腦血管衛教</a></li>
+        <li><a href="#media">媒體報導</a></li>
+      </ul>
+    </div>
+  </header>
 
-  <!-- 頁面標題區塊 -->
-  <h2 class="section-title">
-    <span>🧠</span> 腦血管衛教單元
-  </h2>
-
-  <!-- 三個卡片選單 -->
-  <div class="education-grid">
-    
-    <!-- 單元一卡片 -->
-    <div class="edu-card card-1">
-      <div>
-        <div class="card-header">
-          <span class="card-icon">⏱️</span>
-          <h3 class="card-title">認識腦中風 FAST 口訣</h3>
+  <!-- Hero 主視覺／個人簡介 -->
+  <section id="about" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <img src="avatar.jpg" alt="崔源生醫師" class="hero-avatar" onerror="this.src='https://via.placeholder.com/180'">
+        <div class="hero-text">
+          <h1>崔源生 <span class="en-name">Yuang-Seng Tsuei, MD</span></h1>
+          <h2>神經外科專科醫師 / 腦血管微創手術專家</h2>
+          <p>專長於急性缺血性腦中風動脈機械取栓術、顱內動脈瘤微創栓塞與開顱手術、頸動脈狹窄支架置放術等腦血管微創介入治療[cite: 4, 6]。</p>
+          <div class="btn-group">
+            <a href="https://www.facebook.com" target="_blank" class="btn btn-primary">FB 官方粉絲專頁</a>
+            <a href="#education" class="btn btn-outline">瀏覽衛教專區</a>
+          </div>
         </div>
-        <p class="card-desc">臉歪(Face)、手軟(Arm)、大舌頭(Speech)、記下時間(Time)，把握黃金救援期。</p>
       </div>
-      <a href="#article-1" class="btn-read">閱讀衛教文章 &rarr;</a>
     </div>
+  </section>
 
-    <!-- 單元二卡片 -->
-    <div class="edu-card card-2">
-      <div>
-        <div class="card-header">
-          <span class="card-icon">⚠️</span>
-          <h3 class="card-title">顱內動脈瘤：腦中的不定時炸彈</h3>
+  <!-- 腦血管衛教單元 -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">🧠 腦血管衛教單元</h2>
+
+      <!-- 三個卡片快速選單 -->
+      <div class="education-grid">
+        <div class="edu-card card-1">
+          <div>
+            <div class="card-header">
+              <span class="card-icon">⏱️</span>
+              <h3 class="card-title">認識腦中風 FAST 口訣</h3>
+            </div>
+            <p class="card-desc">臉歪(Face)、手軟(Arm)、大舌頭(Speech)、記下時間(Time)，把握黃金救援期[cite: 10]。</p>
+          </div>
+          <a href="#article-1" class="btn-read">閱讀衛教文章 &rarr;</a>
         </div>
-        <p class="card-desc">解析未破裂動脈瘤之追蹤策略、開顱夾閉與微創栓塞手術之評估選擇。</p>
-      </div>
-      <a href="#article-2" class="btn-read">閱讀衛教文章 &rarr;</a>
-    </div>
 
-    <!-- 單元三卡片 -->
-    <div class="edu-card card-3">
-      <div>
-        <div class="card-header">
-          <span class="card-icon">🫀</span>
-          <h3 class="card-title">頸動脈狹窄與腦缺血預防</h3>
+        <div class="edu-card card-2">
+          <div>
+            <div class="card-header">
+              <span class="card-icon">⚠️</span>
+              <h3 class="card-title">顱內動脈瘤：腦中的不定時炸彈</h3>
+            </div>
+            <p class="card-desc">解析未破裂動脈瘤之追蹤策略、開顱夾閉與微創栓塞手術之評估選擇[cite: 10]。</p>
+          </div>
+          <a href="#article-2" class="btn-read">閱讀衛教文章 &rarr;</a>
         </div>
-        <p class="card-desc">認識頸動脈斑塊形成原因，血管超音波檢查與支架置放手術須知。</p>
+
+        <div class="edu-card card-3">
+          <div>
+            <div class="card-header">
+              <span class="card-icon">🫀</span>
+              <h3 class="card-title">頸動脈狹窄與腦缺血預防</h3>
+            </div>
+            <p class="card-desc">認識頸動脈斑塊形成原因，血管超音波檢查與支架置放手術須知[cite: 10]。</p>
+          </div>
+          <a href="#article-3" class="btn-read">閱讀衛教文章 &rarr;</a>
+        </div>
       </div>
-      <a href="#article-3" class="btn-read">閱讀衛教文章 &rarr;</a>
+
+      <!-- 衛教文章內文 -->
+      <article id="article-1" class="content-article">
+        <h3 class="article-title">單元一：認識腦中風 FAST 口訣</h3>
+        <div class="article-body">
+          <h4>什麼是急性腦中風？</h4>
+          <p>急性腦中風是腦血管突發性的阻塞（缺血性中風，約佔 70-80%）或破裂（出血性中風，約佔 20-30%），導致腦細胞缺氧壞死[cite: 5]。腦細胞一旦缺血，每分鐘就會死亡近 200 萬個[cite: 4]！</p>
+          
+          <h4>搶救黃金期：FAST 口訣快速辨識</h4>
+          <p>發現身邊親友有異狀時，請立即進行以下測試[cite: 4, 10]：</p>
+          <ul>
+            <li><strong>F - Face (臉歪)：</strong> 請對方露齒微笑，觀察兩側臉部表情是否不對稱、嘴歪眼斜[cite: 4, 10]。</li>
+            <li><strong>A - Arm (手軟)：</strong> 請對方雙手平舉向前，觀察是否有單側手臂無力、垂落[cite: 4, 10]。</li>
+            <li><strong>S - Speech (大舌頭)：</strong> 請對方說一句簡單的話，聽聽看是否口齒不清、說不出來或無法理解語意[cite: 4, 10]。</li>
+            <li><strong>T - Time (記下時間)：</strong> <strong>只要出現上述任一症狀，立刻記下發作時間，並撥打 119 送醫！</strong>[cite: 4, 10]</li>
+          </ul>
+
+          <div class="highlight-box">
+            <strong>💡 急性急救關鍵治療：</strong>
+            <ul>
+              <li><strong>靜脈溶栓（iv t-PA）：</strong> 發作 3～4.5 小時內，經評估可用藥溶解血栓[cite: 4, 6]。</li>
+              <li><strong>微創動脈導管機械取栓術：</strong> 發作 6～24 小時內，經 CT/MRI 影像評估具可拯救腦組織者，可透過微創導管伸入腦血管將血塊取出[cite: 4, 6]。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article id="article-2" class="content-article">
+        <h3 class="article-title">單元二：顱內動脈瘤：腦中的不定時炸彈</h3>
+        <div class="article-body">
+          <h4>什麼是顱內動脈瘤？</h4>
+          <p>顱內動脈瘤<strong>並非惡性腫瘤</strong>，而是腦動脈壁因為管壁結構脆弱，在血流長期衝擊下膨出的一個「血管血泡」[cite: 5]。未破裂時通常無症狀，但若血管壁承受不住壓力而破裂，會引發嚴重的<strong>蜘蛛網膜下腔出血（SAH）</strong>，死亡率極高[cite: 5]。</p>
+
+          <h4>發現未破裂動脈瘤，該怎麼辦？</h4>
+          <p>絕大多數未破裂動脈瘤是在健康檢查（如 MRI 腦血管攝影）時偶然發現[cite: 6]。醫師會綜合評估以下因素決定治療策略[cite: 6]：</p>
+          <ul>
+            <li><strong>臨床追蹤策略：</strong> 若動脈瘤較小（如 &lt; 3~7 mm）、形狀規則且無症狀，可先透過定期影像（MRA 或 CTA）追蹤，並嚴格控制血壓[cite: 6, 7]。</li>
+            <li><strong>手術干預時機：</strong> 若動脈瘤大於 5-7 mm、形狀不規則（有不規則突起）、部位風險高（如前交通動脈或後循環）或有動脈瘤家族史，建議積極治療[cite: 6, 7]。</li>
+          </ul>
+
+          <h4>兩大主流治療方式比一比</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>治療方式</th>
+                <th>開顱夾閉手術 (Surgical Clipping)</th>
+                <th>微創血管內栓塞術 (Endovascular Coiling)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>原理</strong></td>
+                <td>透過開顱手術，直接在動脈瘤頸部夾上鈦合金夾，阻斷血流進入[cite: 6]。</td>
+                <td>從鼠蹊部股動脈穿刺，將微導管延伸至腦動脈瘤內填入白金線圈[cite: 6]。</td>
+              </tr>
+              <tr>
+                <td><strong>優點</strong></td>
+                <td>復發率極低，適用於分叉處或寬頸動脈瘤[cite: 6]。</td>
+                <td>微創無開顱傷口、恢復快、住院天數短[cite: 6]。</td>
+              </tr>
+              <tr>
+                <td><strong>進階技術</strong></td>
+                <td>可結合神經航向導航與微創小傷口切口[cite: 6]。</td>
+                <td>可搭配<strong>密網導流支架（Flow Diverter）</strong>治療難治型或巨大動脈瘤[cite: 6]。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article id="article-3" class="content-article">
+        <h3 class="article-title">單元三：頸動脈狹窄與腦缺血預防</h3>
+        <div class="article-body">
+          <h4>為什麼頸動脈狹窄會引發腦中風？</h4>
+          <p>頸動脈是心臟輸送血液至腦部最主要的幹道[cite: 5]。隨著年齡增長，加上高血壓、高血脂、糖尿病或抽菸等因子，血管壁會逐漸堆積脂肪斑塊（粥狀硬化），導致血管腔狹窄[cite: 7]。</p>
+          <ul>
+            <li><strong>狹窄減少腦部血流量：</strong> 引發慢性腦缺血[cite: 5]。</li>
+            <li><strong>斑塊破裂形成血栓：</strong> 血栓隨血流掉落至腦內大、小血管，直接引發缺血性腦中風[cite: 4, 5]。</li>
+          </ul>
+
+          <h4>篩檢工具：頸動脈超音波</h4>
+          <p>頸動脈超音波是<strong>無輻射、無侵入性、快速且安全</strong>的非侵入性檢查[cite: 6, 10]：</p>
+          <ul>
+            <li>可清楚評估血管內膜厚度（IMT）[cite: 6]。</li>
+            <li>測量血管狹窄程度（狹窄百分比）[cite: 6]。</li>
+            <li>評估斑塊品質（軟斑塊、硬化斑塊或不穩定潰瘍斑塊）[cite: 6]。</li>
+          </ul>
+
+          <h4>治療與保健須知</h4>
+          <ol>
+            <li>
+              <strong>藥物與生活保健（狹窄 &lt; 50-70% 或無症狀）：</strong>
+              <p>服用抗血小板藥物（如阿斯匹靈）預防血栓形成[cite: 6]；嚴格控管「三高」（血壓 &lt; 140/90 mmHg、壞膽固醇 LDL-C &lt; 100 mg/dL）[cite: 7]；戒菸、限鹽、維持規律運動[cite: 7]。</p>
+            </li>
+            <li>
+              <strong>頸動脈支架置放術（CAS, 狹窄 &gt; 70% 或有症狀狹窄 &gt; 60%）：</strong>
+              <p>經由股動脈導管延伸至頸部狹窄處，利用保護傘捕捉掉落斑塊，並置入金屬支架撐開狹窄血管，恢復腦部正常血流[cite: 6]。術後需按時服用雙重抗血小板藥物，並定期回診進行超音波追蹤[cite: 6]。</p>
+            </li>
+          </ol>
+        </div>
+      </article>
+
     </div>
+  </section>
 
-  </div>
+  <!-- 雙欄媒體報導 -->
+  <section id="media" style="background-color: #f1f5f9;">
+    <div class="container">
+      <h2 class="section-title">📰 媒體專訪與報導</h2>
+      <div class="media-grid">
+        
+        <div class="media-card">
+          <h3>精準醫療神救援！動脈取栓救回急性腦中風患者</h3>
+          <div class="media-meta">健康醫療網 | 專訪報導</div>
+          <p>深入解析急性缺血性腦中風治療演進，透過導管動脈取栓技術，搶救缺血腦細胞[cite: 4, 6]。</p>
+          <a href="https://www.healthnews.com.tw" target="_blank" class="media-link">閱讀完整報導 &rarr;</a>
+        </div>
 
-  <!-- 文章詳細內容區塊 -->
-  
-  <!-- 文章一 -->
-  <article id="article-1" class="content-article">
-    <h3 class="article-title">單元一：認識腦中風 FAST 口訣</h3>
-    <div class="article-body">
-      <h4>什麼是急性腦中風？</h4>
-      <p>急性腦中風是腦血管突發性的阻塞（缺血性中風，約佔 70-80%）或破裂（出血性中風，約佔 20-30%），導致腦細胞缺氧壞死。腦細胞一旦缺血，每分鐘就會死亡近 200 萬個！</p>
-      
-      <h4>搶救黃金期：FAST 口訣快速辨識</h4>
-      <p>發現身邊親友有異狀時，請立即進行以下測試：</p>
-      <ul>
-        <li><strong>F - Face (臉歪)：</strong> 請對方露齒微笑，觀察兩側臉部表情是否不對稱、嘴歪眼斜。</li>
-        <li><strong>A - Arm (手軟)：</strong> 請對方雙手平舉向前，觀察是否有單側手臂無力、垂落。</li>
-        <li><strong>S - Speech (大舌頭)：</strong> 請對方說一句簡單的話，聽聽看是否口齒不清、說不出來或無法理解語意。</li>
-        <li><strong>T - Time (記下時間)：</strong> <strong>只要出現上述任一症狀，立刻記下發作時間，並撥打 119 送醫！</strong></li>
-      </ul>
+        <div class="media-card">
+          <h3>腦中不定時炸彈！腦動脈瘤微創栓塞手術新趨勢</h3>
+          <div class="media-meta">衛教新聞 | 專題採訪</div>
+          <p>介紹未破裂動脈瘤篩檢與現代密網導流支架微創手術，為患者提供安全有保障的治療選擇[cite: 6]。</p>
+          <a href="https://www.healthnews.com.tw" target="_blank" class="media-link">閱讀完整報導 &rarr;</a>
+        </div>
 
-      <div class="highlight-box">
-        <strong>💡 急性急救關鍵治療：</strong>
-        <ul>
-          <li><strong>靜脈溶栓（iv t-PA）：</strong> 發作 3～4.5 小時內，經評估可用藥溶解血栓。</li>
-          <li><strong>微創動脈導管機械取栓術：</strong> 發作 6～24 小時內，經 CT/MRI 影像評估具可拯救腦組織者，可透過微創導管伸入腦血管將血塊取出。</li>
-        </ul>
       </div>
     </div>
-  </article>
+  </section>
 
-  <!-- 文章二 -->
-  <article id="article-2" class="content-article">
-    <h3 class="article-title">單元二：顱內動脈瘤：腦中的不定時炸彈</h3>
-    <div class="article-body">
-      <h4>什麼是顱內動脈瘤？</h4>
-      <p>顱內動脈瘤<strong>並非惡性腫瘤</strong>，而是腦動脈壁因為管壁結構脆弱，在血流長期衝擊下膨出的一個「血管血泡」。未破裂時通常無症狀，但若血管壁承受不住壓力而破裂，會引發嚴重的<strong>蜘蛛網膜下腔出血（SAH）</strong>，死亡率極高。</p>
-
-      <h4>發現未破裂動脈瘤，該怎麼辦？</h4>
-      <p>絕大多數未破裂動脈瘤是在健康檢查（如 MRI 腦血管攝影）時偶然發現。醫師會綜合評估以下因素決定治療策略：</p>
-      <ul>
-        <li><strong>臨床追蹤策略：</strong> 若動脈瘤較小（如 &lt; 3~7 mm）、形狀規則且無症狀，可先透過定期影像（MRA 或 CTA）追蹤，並嚴格控制血壓。</li>
-        <li><strong>手術干預時機：</strong> 若動脈瘤大於 5-7 mm、形狀不規則（有不規則突起）、部位風險高（如前交通動脈或後循環）或有動脈瘤家族史，建議積極治療。</li>
-      </ul>
-
-      <h4>兩大主流治療方式比一比</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>治療方式</th>
-            <th>開顱夾閉手術 (Surgical Clipping)</th>
-            <th>微創血管內栓塞術 (Endovascular Coiling)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>原理</strong></td>
-            <td>透過開顱手術，直接在動脈瘤頸部夾上鈦合金夾，阻斷血流進入。</td>
-            <td>從鼠蹊部股動脈穿刺，將微導管延伸至腦動脈瘤內填入白金線圈。</td>
-          </tr>
-          <tr>
-            <td><strong>優點</strong></td>
-            <td>復發率極低，適用於分叉處或寬頸動脈瘤。</td>
-            <td>微創無開顱傷口、恢復快、住院天數短。</td>
-          </tr>
-          <tr>
-            <td><strong>進階技術</strong></td>
-            <td>可結合神經航向導航與微創小傷口切口。</td>
-            <td>可搭配<strong>密網導流支架（Flow Diverter）</strong>治療難治型或巨大動脈瘤。</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- 頁尾 -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 崔源生醫師 Yuang-Seng Tsuei, MD. All Rights Reserved.</p>
     </div>
-  </article>
-
-  <!-- 文章三 -->
-  <article id="article-3" class="content-article">
-    <h3 class="article-title">單元三：頸動脈狹窄與腦缺血預防</h3>
-    <div class="article-body">
-      <h4>為什麼頸動脈狹窄會引發腦中風？</h4>
-      <p>頸動脈是心臟輸送血液至腦部最主要的幹道。隨著年齡增長，加上高血壓、高血脂、糖尿病或抽菸等因子，血管壁會逐漸堆積脂肪斑塊（粥狀硬化），導致血管腔狹窄。</p>
-      <ul>
-        <li><strong>狹窄減少腦部血流量：</strong> 引發慢性腦缺血。</li>
-        <li><strong>斑塊破裂形成血栓：</strong> 血栓隨血流掉落至腦內大、小血管，直接引發缺血性腦中風。</li>
-      </ul>
-
-      <h4>篩檢工具：頸動脈超音波</h4>
-      <p>頸動脈超音波是<strong>無輻射、無侵入性、快速且安全</strong>的非侵入性檢查：</p>
-      <ul>
-        <li>可清楚評估血管內膜厚度（IMT）。</li>
-        <li>測量血管狹窄程度（狹窄百分比）。</li>
-        <li>評估斑塊品質（軟斑塊、硬化斑塊或不穩定潰瘍斑塊）。</li>
-      </ul>
-
-      <h4>治療與保健須知</h4>
-      <ol>
-        <li>
-          <strong>藥物與生活保健（狹窄 &lt; 50-70% 或無症狀）：</strong>
-          <p>服用抗血小板藥物（如阿斯匹靈）預防血栓形成；嚴格控管「三高」（血壓 &lt; 140/90 mmHg、壞膽固醇 LDL-C &lt; 100 mg/dL）；戒菸、限鹽、維持規律運動。</p>
-        </li>
-        <li>
-          <strong>頸動脈支架置放術（CAS, 狹窄 &gt; 70% 或有症狀狹窄 &gt; 60%）：</strong>
-          <p>經由股動脈導管延伸至頸部狹窄處，利用保護傘捕捉掉落斑塊，並置入金屬支架撐開狹窄血管，恢復腦部正常血流。術後需按時服用雙重抗血小板藥物，並定期回診進行超音波追蹤。</p>
-        </li>
-      </ol>
-    </div>
-  </article>
-
-</div>
+  </footer>
 
 </body>
 </html>
