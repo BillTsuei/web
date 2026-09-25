@@ -893,7 +893,7 @@
                 text-align: center;
             }
         }
-        #modal-guestbook .modal-content { max-width: 900px; }
+        #modal-guestbook .modal-content { max-width: 760px; background: linear-gradient(115deg, #fff 58%, #edf5fa); border: 1px solid #e1eaf0; border-radius: 12px; box-shadow: 0 10px 30px rgba(15, 56, 93, 0.16); }
         #modal-guestbook .waline-intro { margin: 0 0 14px; color: var(--text-muted); }
         #modal-guestbook #waline { width: 100%; min-width: 0; }
     </style>
@@ -930,8 +930,11 @@
 
         <!-- 留言由 Waline 提供，訪客可使用電子郵件留言 -->
         <div class="header-stats-badge">
-            <button class="stat-btn comment-badge-btn" type="button" onclick="openModal('modal-guestbook')" aria-label="開啟留言與反應">
-                <i class="fa-solid fa-comments"></i> 留言與反應
+            <button id="like-demo-button" class="stat-btn like-btn" type="button" onclick="addDemoLike()" aria-label="按讚">
+                <i class="fa-solid fa-thumbs-up"></i> <span id="like-demo-count">1</span>
+            </button>
+            <button class="stat-btn comment-badge-btn" type="button" onclick="openModal('modal-guestbook')" aria-label="開啟留言視窗">
+                <i class="fa-solid fa-comments"></i> 留言
             </button>
         </div>
     </header>
@@ -1372,6 +1375,27 @@
 
 <!-- JS 互動腳本 -->
 <script>
+    const demoLikeStorageKey = 'web-home-demo-likes';
+    function initDemoLikeCount() {
+        const countElement = document.getElementById('like-demo-count');
+        if (!countElement) return;
+        try {
+            let count = Number(localStorage.getItem(demoLikeStorageKey));
+            if (!Number.isFinite(count) || count < 1) {
+                count = 1;
+                localStorage.setItem(demoLikeStorageKey, String(count));
+            }
+            countElement.textContent = String(count);
+        } catch (_) { countElement.textContent = '1'; }
+    }
+    function addDemoLike() {
+        const countElement = document.getElementById('like-demo-count');
+        if (!countElement) return;
+        const nextCount = Math.max(1, Number(countElement.textContent) || 1) + 1;
+        countElement.textContent = String(nextCount);
+        try { localStorage.setItem(demoLikeStorageKey, String(nextCount)); } catch (_) {}
+    }
+    initDemoLikeCount();
     async function loadWaline() {
         const container = document.getElementById('waline');
         if (!container || container.dataset.loaded === 'true' || container.dataset.loading === 'true') return;
@@ -1387,7 +1411,7 @@
                 login: 'enable',
                 meta: ['nick', 'mail'],
                 requiredMeta: ['nick'],
-                reaction: ['https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f44d.png'],
+                reaction: false,
                 dark: 'auto'
             });
             container.dataset.loaded = 'true';
@@ -1418,6 +1442,7 @@
 
 </body>
 </html>
+
 
 
 
