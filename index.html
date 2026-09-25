@@ -183,7 +183,7 @@
             font-size: 1.05rem !important;
         }
 
-        /* 個人卡片右下角：按讚與留言統計專區 */
+        /* 右下角按讚與留言統計專區 */
         .header-stats-badge {
             position: absolute;
             bottom: 15px;
@@ -278,7 +278,7 @@
             line-height: 1.6;
         }
 
-        /* 快捷導航選單（保持原本的 6 個欄位） */
+        /* 快捷導航選單（6 個欄位） */
         .icon-nav-container {
             background: var(--card-bg);
             border-radius: 12px;
@@ -539,7 +539,7 @@
             color: var(--accent-color);
         }
 
-        /* 免登入互動留言區 */
+        /* 彈出留言視窗內的表單與列表樣式 */
         .guestbook-form {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -596,7 +596,6 @@
             font-size: 0.95rem;
             cursor: pointer;
             transition: background-color 0.2s ease, transform 0.1s ease;
-            align-self: flex-end;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -646,6 +645,13 @@
             font-size: 0.93rem;
             color: #475569;
             line-height: 1.6;
+        }
+
+        .no-comment-tip {
+            text-align: center;
+            color: #94a3b8;
+            padding: 20px 0;
+            font-size: 0.95rem;
         }
 
         /* 彈出視窗 (Modal) 樣式 */
@@ -918,14 +924,14 @@
             <p>致力於提供最先進的腦血管介入手術、顯微開顱與複合式手術，守護患者腦與脊椎健康。</p>
         </div>
 
-        <!-- 卡片右下角：按讚數與留言數專區 -->
+        <!-- 右下角按讚數與留言按鈕專區（預設維持 0 點擊跳出彈窗） -->
         <div class="header-stats-badge">
             <button class="stat-btn like-btn" onclick="addLike()">
-                <i class="fa-solid fa-thumbs-up"></i> <span id="likeCount">128</span>
+                <i class="fa-solid fa-thumbs-up"></i> <span id="likeCount">0</span>
             </button>
-            <a href="#guestbook" class="stat-btn comment-badge-btn">
-                <i class="fa-solid fa-comment-dots"></i> <span id="commentBadgeCount">2</span> 則留言
-            </a>
+            <button class="stat-btn comment-badge-btn" onclick="openModal('modal-guestbook')">
+                <i class="fa-solid fa-comment-dots"></i> <span id="commentBadgeCount">0</span> 則留言
+            </button>
         </div>
     </header>
 
@@ -939,7 +945,7 @@
         </div>
     </div>
 
-    <!-- 照片下方六大功能 Icon 快捷導航選單（原汁原味 6 個欄位） -->
+    <!-- 六大功能 Icon 快捷導航選單 (保持原樣 6 個欄位) -->
     <div class="icon-nav-container">
         <nav class="icon-nav">
             <a href="#experience" class="icon-btn">
@@ -1197,57 +1203,6 @@
         </div>
     </section>
 
-    <!-- 免登入訪客留言交流專區 -->
-    <section id="guestbook">
-        <h2><i class="fa-solid fa-comments"></i> 訪客留言交流專區</h2>
-        
-        <div class="guestbook-form">
-            <form id="commentForm" onsubmit="submitComment(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="authorName"><i class="fa-solid fa-user"></i> 您的稱呼／暱稱 *</label>
-                        <input type="text" id="authorName" class="form-control" placeholder="例：張先生 / 林女士" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="authorContact"><i class="fa-solid fa-envelope"></i> 聯絡 Email 或電話（選填，不會公開）</label>
-                        <input type="text" id="authorContact" class="form-control" placeholder="例：service@example.com">
-                    </div>
-                </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="commentContent"><i class="fa-solid fa-pen-to-square"></i> 留言內容 *</label>
-                    <textarea id="commentContent" class="form-control" placeholder="請在此留下您的問題或感謝心聲（免登入即可留言）..." required></textarea>
-                </div>
-                <div style="display: flex; justify-content: flex-end;">
-                    <button type="submit" class="btn-submit-comment">
-                        <i class="fa-solid fa-paper-plane"></i> 送出留言
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <div class="guestbook-list" id="commentList">
-            <div class="comment-item">
-                <div class="comment-header">
-                    <span class="comment-author"><i class="fa-solid fa-circle-user"></i> 陳先生</span>
-                    <span class="comment-date">2026-09-20</span>
-                </div>
-                <div class="comment-text">
-                    感謝崔醫師醫療團隊在動脈取栓手術中的迅速救治，讓家父能在黃金期內獲得良好處置並順利康復，非常感謝您！
-                </div>
-            </div>
-
-            <div class="comment-item">
-                <div class="comment-header">
-                    <span class="comment-author"><i class="fa-solid fa-circle-user"></i> 敬佩的讀者</span>
-                    <span class="comment-date">2026-09-15</span>
-                </div>
-                <div class="comment-text">
-                    閱讀了《強效圖解！腦中風神救援》這本書後，對 FAST 口訣和腦動脈瘤的治療有了更清楚的了解，非常實用的衛教書！
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- 6. 學術發表與參考文獻 -->
     <section id="references">
         <h2><i class="fa-solid fa-book-bookmark"></i> 學術發表與參考文獻</h2>
@@ -1307,8 +1262,47 @@
     </footer>
 </div>
 
-<!-- ==================== 腦血管衛教彈出視窗 (Modal Pop-ups) ==================== -->
+<!-- ==================== 彈出視窗專區 (Modal Pop-ups) ==================== -->
 
+<!-- Modal 0: 免登入訪客留言交流視窗（可收闔） -->
+<div id="modal-guestbook" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-guestbook')">
+    <div class="modal-content">
+        <button class="modal-close-btn" onclick="closeModal('modal-guestbook')">&times;</button>
+        <div class="modal-body">
+            <h3><i class="fa-solid fa-comments"></i> 訪客留言交流專區</h3>
+            
+            <div class="guestbook-form">
+                <form id="commentForm" onsubmit="submitComment(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="authorName"><i class="fa-solid fa-user"></i> 您的稱呼／暱稱 *</label>
+                            <input type="text" id="authorName" class="form-control" placeholder="例：張先生 / 林女士" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="authorContact"><i class="fa-solid fa-envelope"></i> 聯絡 Email 或電話（選填，不會公開）</label>
+                            <input type="text" id="authorContact" class="form-control" placeholder="例：service@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label for="commentContent"><i class="fa-solid fa-pen-to-square"></i> 留言內容 *</label>
+                        <textarea id="commentContent" class="form-control" placeholder="請在此留下您的問題或感謝心聲（免登入即可留言）..." required></textarea>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end;">
+                        <button type="submit" class="btn-submit-comment">
+                            <i class="fa-solid fa-paper-plane"></i> 送出留言
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="guestbook-list" id="commentList">
+                <div class="no-comment-tip" id="noCommentTip">目前尚無留言，歡迎成為第一位留言的訪客！</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 1: 認識腦中風 FAST 口訣 -->
 <div id="modal-1" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-1')">
     <div class="modal-content">
         <button class="modal-close-btn" onclick="closeModal('modal-1')">&times;</button>
@@ -1336,6 +1330,7 @@
     </div>
 </div>
 
+<!-- Modal 2: 顱內動脈瘤 -->
 <div id="modal-2" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-2')">
     <div class="modal-content">
         <button class="modal-close-btn" onclick="closeModal('modal-2')">&times;</button>
@@ -1376,6 +1371,7 @@
     </div>
 </div>
 
+<!-- Modal 3: 頸動脈狹窄與腦缺血預防 -->
 <div id="modal-3" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-3')">
     <div class="modal-content">
         <button class="modal-close-btn" onclick="closeModal('modal-3')">&times;</button>
@@ -1404,6 +1400,7 @@
 <script>
     let hasLiked = false;
 
+    // 按讚功能
     function addLike() {
         const likeCountEl = document.getElementById('likeCount');
         let currentLikes = parseInt(likeCountEl.innerText);
@@ -1416,6 +1413,7 @@
         }
     }
 
+    // 視窗開啟 / 關閉控制
     function openModal(modalId) {
         document.getElementById(modalId).style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -1432,6 +1430,7 @@
         }
     }
 
+    // 免登入留言提交處理
     function submitComment(event) {
         event.preventDefault();
         
@@ -1439,6 +1438,7 @@
         const contentInput = document.getElementById('commentContent');
         const commentList = document.getElementById('commentList');
         const badgeCountEl = document.getElementById('commentBadgeCount');
+        const noCommentTip = document.getElementById('noCommentTip');
 
         const name = nameInput.value.trim();
         const content = contentInput.value.trim();
@@ -1448,8 +1448,14 @@
             return;
         }
 
+        // 移除無留言提示文字
+        if (noCommentTip) {
+            noCommentTip.style.display = 'none';
+        }
+
         const today = new Date().toISOString().split('T')[0];
 
+        // 建立新留言卡片
         const newComment = document.createElement('div');
         newComment.className = 'comment-item';
         newComment.style.animation = 'modalFadeIn 0.4s ease';
@@ -1465,7 +1471,7 @@
 
         commentList.insertBefore(newComment, commentList.firstChild);
 
-        // 更新個人卡片右下角的留言數
+        // 即時累加右下角的留言數
         let currentCount = parseInt(badgeCountEl.innerText);
         badgeCountEl.innerText = currentCount + 1;
 
