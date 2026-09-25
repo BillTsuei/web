@@ -238,8 +238,8 @@
 
         .icon-nav {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
         }
 
         .icon-btn {
@@ -247,7 +247,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 12px 8px;
+            padding: 12px 6px;
             background: var(--bg-color);
             border-radius: 10px;
             text-decoration: none;
@@ -257,14 +257,14 @@
         }
 
         .icon-btn i {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
             margin-bottom: 6px;
             transition: transform 0.2s ease;
         }
 
         .icon-btn span {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: bold;
             text-align: center;
         }
@@ -488,6 +488,115 @@
             color: var(--accent-color);
         }
 
+        /* 免登入互動留言區 */
+        .guestbook-form {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .form-control {
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 86, 140, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit-comment {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            align-self: flex-end;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-submit-comment:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .guestbook-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .comment-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .comment-text {
+            font-size: 0.93rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
         /* 彈出視窗 (Modal) 樣式 */
         .modal-overlay {
             display: none;
@@ -695,6 +804,12 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .icon-nav {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .form-row {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 768px) {
@@ -761,7 +876,7 @@
         </div>
     </div>
 
-    <!-- 照片下方六大功能 Icon 快捷導航選單 -->
+    <!-- 照片下方七大功能 Icon 快捷導航選單 -->
     <div class="icon-nav-container">
         <nav class="icon-nav">
             <a href="#experience" class="icon-btn">
@@ -783,6 +898,10 @@
             <a href="#spine-health" class="icon-btn">
                 <i class="fa-solid fa-bone"></i>
                 <span>脊椎衛教</span>
+            </a>
+            <a href="#guestbook" class="icon-btn">
+                <i class="fa-solid fa-comments"></i>
+                <span>訪客留言</span>
             </a>
             <a href="#references" class="icon-btn">
                 <i class="fa-solid fa-book-bookmark"></i>
@@ -1022,7 +1141,62 @@
         </div>
     </section>
 
-    <!-- 6. 學術發表與參考文獻 -->
+    <!-- 6. 免登入訪客留言交流區 -->
+    <section id="guestbook">
+        <h2><i class="fa-solid fa-comments"></i> 訪客留言交流專區</h2>
+        
+        <!-- 免登入留言表單 -->
+        <div class="guestbook-form">
+            <form id="commentForm" onsubmit="submitComment(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="authorName"><i class="fa-solid fa-user"></i> 您的稱呼／暱稱 *</label>
+                        <input type="text" id="authorName" class="form-control" placeholder="例：張先生 / 林女士" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="authorContact"><i class="fa-solid fa-envelope"></i> 聯絡 Email 或電話（選填，不會公開）</label>
+                        <input type="text" id="authorContact" class="form-control" placeholder="例：service@example.com">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="commentContent"><i class="fa-solid fa-pen-to-square"></i> 留言內容 *</label>
+                    <textarea id="commentContent" class="form-control" placeholder="請在此留下您的問題或感謝心聲（免登入即可留言）..." required></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end;">
+                    <button type="submit" class="btn-submit-comment">
+                        <i class="fa-solid fa-paper-plane"></i> 送出留言
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 留言顯示列表 -->
+        <div class="guestbook-list" id="commentList">
+            <!-- 預設範例留言 1 -->
+            <div class="comment-item">
+                <div class="comment-header">
+                    <span class="comment-author"><i class="fa-solid fa-circle-user"></i> 陳先生</span>
+                    <span class="comment-date">2026-09-20</span>
+                </div>
+                <div class="comment-text">
+                    感謝崔醫師醫療團隊在動脈取栓手術中的迅速救治，讓家父能在黃金期內獲得良好處置並順利康復，非常感謝您！
+                </div>
+            </div>
+
+            <!-- 預設範例留言 2 -->
+            <div class="comment-item">
+                <div class="comment-header">
+                    <span class="comment-author"><i class="fa-solid fa-circle-user"></i> 敬佩的讀者</span>
+                    <span class="comment-date">2026-09-15</span>
+                </div>
+                <div class="comment-text">
+                    閱讀了《強效圖解！腦中風神救援》這本書後，對 FAST 口訣和腦動脈瘤的治療有了更清楚的了解，非常實用的衛教書！
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 學術發表與參考文獻 -->
     <section id="references">
         <h2><i class="fa-solid fa-book-bookmark"></i> 學術發表與參考文獻</h2>
         
@@ -1179,7 +1353,7 @@
     </div>
 </div>
 
-<!-- JS 視窗控制腳本 -->
+<!-- JS 視窗控制與留言功能腳本 -->
 <script>
     function openModal(modalId) {
         document.getElementById(modalId).style.display = 'flex';
@@ -1195,6 +1369,58 @@
         if (event.target.classList.contains('modal-overlay')) {
             closeModal(modalId);
         }
+    }
+
+    // 訪客免登入留言提交處理
+    function submitComment(event) {
+        event.preventDefault();
+        
+        const nameInput = document.getElementById('authorName');
+        const contentInput = document.getElementById('commentContent');
+        const commentList = document.getElementById('commentList');
+
+        const name = nameInput.value.trim();
+        const content = contentInput.value.trim();
+
+        if (!name || !content) {
+            alert('請填寫暱稱與留言內容！');
+            return;
+        }
+
+        const today = new Date().toISOString().split('T')[0];
+
+        // 建立新留言 DOM 節點
+        const newComment = document.createElement('div');
+        newComment.className = 'comment-item';
+        newComment.style.animation = 'modalFadeIn 0.4s ease';
+        newComment.innerHTML = `
+            <div class="comment-header">
+                <span class="comment-author"><i class="fa-solid fa-circle-user"></i> ${escapeHtml(name)}</span>
+                <span class="comment-date">${today}</span>
+            </div>
+            <div class="comment-text">
+                ${escapeHtml(content)}
+            </div>
+        `;
+
+        // 插入至最前面
+        commentList.insertBefore(newComment, commentList.firstChild);
+
+        // 清空輸入欄
+        nameInput.value = '';
+        document.getElementById('authorContact').value = '';
+        contentInput.value = '';
+
+        alert('留言成功送出！');
+    }
+
+    function escapeHtml(text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 </script>
 
