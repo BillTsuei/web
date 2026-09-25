@@ -36,17 +36,18 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            background: radial-gradient(ellipse at 10% 0%, #e7f2f8 0, transparent 38%), var(--bg-color);
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1120px;
             margin: 0 auto;
             padding: 20px;
         }
 
         /* Header / Hero Section */
         header {
-            background: var(--card-bg);
+            background: linear-gradient(115deg,#fff 58%,#edf5fa);
             border-radius: 12px;
             padding: 35px 40px;
             margin-bottom: 25px;
@@ -54,6 +55,21 @@
             display: flex;
             align-items: center;
             gap: 40px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e1eaf0;
+        }
+
+        header:after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            right: -85px;
+            top: -90px;
+            border: 30px solid rgba(26,86,140,.06);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .profile-img-container {
@@ -67,7 +83,7 @@
             width: 210px;
             height: 210px;
             border-radius: 50%;
-            object-fit: contain;
+            object-fit: cover;
             background-color: #f0f4f8;
             border: 4px solid var(--primary-color);
             padding: 5px;
@@ -167,6 +183,50 @@
             font-size: 1.05rem !important;
         }
 
+        /* 新書宣傳卡片區塊 */
+        .book-banner-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e3e8ee;
+            border-left: 6px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .book-cover-img {
+            width: 140px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .book-info-text h3 {
+            font-size: 1.35rem;
+            color: var(--accent-color);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .book-info-text h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .book-info-text p {
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
         /* Icon Quick Menu Section */
         .icon-nav-container {
             background: var(--card-bg);
@@ -229,13 +289,14 @@
             margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             scroll-margin-top: 20px;
+            border: 1px solid #e5edf2;
         }
 
         section h2 {
             font-size: 1.5rem;
             color: var(--primary-color);
-            border-bottom: 2px solid var(--bg-color);
-            padding-bottom: 10px;
+            border-bottom: 1px solid #e8eef2;
+            padding-bottom: 12px;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -353,25 +414,33 @@
         .single-row-grid .card-item-clickable {
             flex: 1;
             background: var(--bg-color);
-            padding: 20px;
+            padding: 0;
             border-radius: 12px;
             border-left: 5px solid var(--primary-color);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.25s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             cursor: pointer;
             box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-            border-top: 1px solid #eef2f5;
-            border-right: 1px solid #eef2f5;
-            border-bottom: 1px solid #eef2f5;
+            border-top: 1px solid #e1eaf0;
+            border-right: 1px solid #e1eaf0;
+            border-bottom: 1px solid #e1eaf0;
+            overflow: hidden;
         }
 
         .single-row-grid .card-item-clickable:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 28px rgba(30,76,108,.13);
             border-left-color: var(--accent-color);
             background: #ffffff;
+        }
+
+        .card-illustration {
+            display: block;
+            width: 100%;
+            height: 132px;
+            object-fit: cover;
         }
 
         .card-header {
@@ -411,6 +480,7 @@
             align-items: center;
             gap: 5px;
             align-self: flex-end;
+            padding: 0 18px 17px;
             margin-top: auto;
         }
 
@@ -621,6 +691,10 @@
             .single-row-grid {
                 flex-direction: column;
             }
+            .book-banner-container {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         @media (max-width: 768px) {
@@ -645,23 +719,6 @@
                 text-align: center;
             }
         }
-
-        /* Visual refresh: clearer hierarchy, responsive image cards, and accessible focus states */
-        body { background: radial-gradient(ellipse at 10% 0%, #e7f2f8 0, transparent 38%), var(--bg-color); }
-        .container { max-width: 1120px; }
-        header { position: relative; overflow: hidden; border: 1px solid #e1eaf0; background: linear-gradient(115deg,#fff 58%,#edf5fa); }
-        header:after { content: ""; position:absolute; width:220px; height:220px; right:-85px; top:-90px; border:30px solid rgba(26,86,140,.06); border-radius:50%; pointer-events:none; }
-        .profile-img { object-fit: cover; }
-        section { border: 1px solid #e5edf2; transition: transform .2s ease, box-shadow .2s ease; }
-        section h2 { padding-bottom: 12px; border-bottom: 1px solid #e8eef2; }
-        .card-item-clickable { overflow:hidden; padding:0; border:1px solid #e1eaf0; transition:transform .2s ease,box-shadow .2s ease; }
-        .card-item-clickable:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(30,76,108,.13); }
-        .card-illustration { display:block; width:100%; height:132px; object-fit:cover; }
-        .card-content { padding:18px 18px 8px; }`r`n        .card-item-clickable > div:first-of-type { padding:18px 18px 8px; }
-        .card-action { padding:0 18px 17px; }
-        a:focus-visible, button:focus-visible, .card-item-clickable:focus-visible { outline:3px solid #e0a743; outline-offset:3px; }
-        @media (max-width:700px) { header { padding:26px 22px; gap:22px; } .card-illustration { height:118px; } }
-        @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; } }
     </style>
 </head>
 <body>
@@ -689,10 +746,20 @@
                 </a>
             </h2>
             <p class="society-title">第五屆台灣神經血管外科與介入治療醫學會理事長 (TSNIS)</p>
-            <p><strong>專長領域：</strong>腦動脈瘤/腦瘤開顱手術、急性缺血性腦中風機械取栓、顱內動脈瘤微創手術、動靜脈畸形處置、脊椎手術、常壓性腦水腰椎分流手術[cite: 4, 6]</p>
-            <p>致力於提供最先進的腦血管介入手術、顯微開顱與複合式手術，守護患者腦與脊椎健康[cite: 6]。</p>
+            <p><strong>專長領域：</strong>腦動脈瘤/腦瘤開顱手術、急性缺血性腦中風機械取栓、顱內動脈瘤微創手術、動靜脈畸形處置、脊椎手術、常壓性腦水腰椎分流手術</p>
+            <p>致力於提供最先進的腦血管介入手術、顯微開顱與複合式手術，守護患者腦與脊椎健康。</p>
         </div>
     </header>
+
+    <!-- 新書宣傳卡片區塊 -->
+    <div class="book-banner-container">
+        <img src="media/book.jpg" alt="強效圖解！腦中風神救援 專書封面" class="book-cover-img" onerror="this.src='https://via.placeholder.com/140x190?text=腦中風神救援'">
+        <div class="book-info-text">
+            <h3><i class="fa-solid fa-book-open-reader"></i> 權威著作推薦</h3>
+            <h4>《強效圖解！腦中風神救援》</h4>
+            <p>結合神經外科臨床實戰經驗，以清晰圖解方式幫助大眾精準辨識急性腦中風前兆 FAST 口訣、了解動脈機械取栓與微創介入手術，並提供完善的腦血管病變初級與次級預防照護指南。</p>
+        </div>
+    </div>
 
     <!-- 照片下方六大功能 Icon 快捷導航選單 -->
     <div class="icon-nav-container">
@@ -744,7 +811,7 @@
                     <strong>1. 腦動脈瘤 / 腦瘤開顱手術</strong>
                 </div>
                 <div class="specialty-card-body">
-                    運用高階顯微鏡與神經導航定位系統，精準進行腦動脈瘤夾閉與腦腫瘤微創切除[cite: 6]。
+                    運用高階顯微鏡與神經導航定位系統，精準進行腦動脈瘤夾閉與腦腫瘤微創切除。
                 </div>
             </div>
 
@@ -754,7 +821,7 @@
                     <strong>2. 腦血管介入與取栓手術</strong>
                 </div>
                 <div class="specialty-card-body">
-                    黃金救援期內實施大血管阻塞動脈取栓術 (IA Thrombectomy) 及頸動脈支架置放[cite: 4, 6]。
+                    黃金救援期內實施大血管阻塞動脈取栓術 (IA Thrombectomy) 及頸動脈支架置放。
                 </div>
             </div>
 
@@ -764,7 +831,7 @@
                     <strong>3. 腦血管微創處置</strong>
                 </div>
                 <div class="specialty-card-body">
-                    經血管導管進行顱內動脈瘤密網支架、彈簧圈栓塞及腦動靜脈畸形/瘻管治療[cite: 6]。
+                    經血管導管進行顱內動脈瘤密網支架、彈簧圈栓塞及腦動靜脈畸形/瘻管治療。
                 </div>
             </div>
 
@@ -774,7 +841,7 @@
                     <strong>4. 複合式手術 (Hybrid OR)</strong>
                 </div>
                 <div class="specialty-card-body">
-                    結合即時血管攝影與顯微外科手術，於複合式手術室一次完成複雜腦血管處置[cite: 6]。
+                    結合即時血管攝影與顯微外科手術，於複合式手術室一次完成複雜腦血管處置。
                 </div>
             </div>
 
@@ -874,12 +941,12 @@
             <!-- 卡片 1 -->
             <div class="card-item-clickable" onclick="openModal('modal-1')">
                 <img class="card-illustration" src="media/fast.svg" alt="腦血管衛教示意插畫" loading="lazy">
-                <div>
+                <div style="padding: 18px 18px 8px;">
                     <div class="card-header">
                         <i class="fa-solid fa-stopwatch"></i>
                         <strong>認識腦中風 FAST 口訣</strong>
                     </div>
-                    <p class="card-body-text">臉歪(Face)、手軟(Arm)、大舌頭(Speech)、記下時間(Time)，把握黃金救援期[cite: 10]。</p>
+                    <p class="card-body-text">臉歪(Face)、手軟(Arm)、大舌頭(Speech)、記下時間(Time)，把握黃金救援期。</p>
                 </div>
                 <div class="card-action">閱讀文章 <i class="fa-solid fa-arrow-right"></i></div>
             </div>
@@ -887,12 +954,12 @@
             <!-- 卡片 2 -->
             <div class="card-item-clickable" onclick="openModal('modal-2')">
                 <img class="card-illustration" src="media/aneurysm.svg" alt="腦血管衛教示意插畫" loading="lazy">
-                <div>
+                <div style="padding: 18px 18px 8px;">
                     <div class="card-header">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         <strong>顱內動脈瘤：腦中不定時炸彈</strong>
                     </div>
-                    <p class="card-body-text">解析未破裂動脈瘤之追蹤策略、開顱夾閉與微創栓塞手術選擇[cite: 10]。</p>
+                    <p class="card-body-text">解析未破裂動脈瘤之追蹤策略、開顱夾閉與微創栓塞手術選擇。</p>
                 </div>
                 <div class="card-action">閱讀文章 <i class="fa-solid fa-arrow-right"></i></div>
             </div>
@@ -900,12 +967,12 @@
             <!-- 卡片 3 -->
             <div class="card-item-clickable" onclick="openModal('modal-3')">
                 <img class="card-illustration" src="media/carotid.svg" alt="腦血管衛教示意插畫" loading="lazy">
-                <div>
+                <div style="padding: 18px 18px 8px;">
                     <div class="card-header">
                         <i class="fa-solid fa-heart-pulse"></i>
                         <strong>頸動脈狹窄與腦缺血預防</strong>
                     </div>
-                    <p class="card-body-text">認識頸動脈斑塊形成原因，血管超音波檢查與支架置放手術須知[cite: 10]。</p>
+                    <p class="card-body-text">認識頸動脈斑塊形成原因，血管超音波檢查與支架置放手術須知。</p>
                 </div>
                 <div class="card-action">閱讀文章 <i class="fa-solid fa-arrow-right"></i></div>
             </div>
@@ -919,7 +986,7 @@
         <div class="single-row-grid">
             <a href="https://www.google.com/search?q=頸椎間盤突出+微創手術" target="_blank" rel="noopener noreferrer" class="card-item-clickable" style="text-decoration:none;">
                 <img class="card-illustration" src="media/spine.svg" alt="脊椎結構示意插畫" loading="lazy">
-                <div>
+                <div style="padding: 18px 18px 8px;">
                     <div class="card-header">
                         <i class="fa-solid fa-child-reaching"></i>
                         <strong>頸椎壓迫與手麻疼痛</strong>
@@ -931,7 +998,7 @@
 
             <a href="https://www.google.com/search?q=坐骨神經痛+腰椎微創" target="_blank" rel="noopener noreferrer" class="card-item-clickable" style="text-decoration:none;">
                 <img class="card-illustration" src="media/spine.svg" alt="脊椎結構示意插畫" loading="lazy">
-                <div>
+                <div style="padding: 18px 18px 8px;">
                     <div class="card-header">
                         <i class="fa-solid fa-person-walking"></i>
                         <strong>坐骨神經痛與腰椎退化</strong>
@@ -943,7 +1010,7 @@
 
             <a href="https://www.google.com/search?q=脊椎壓迫性骨折+骨水泥灌注" target="_blank" rel="noopener noreferrer" class="card-item-clickable" style="text-decoration:none;">
                 <img class="card-illustration" src="media/spine.svg" alt="脊椎結構示意插畫" loading="lazy">
-                <div>
+                <div style="padding: 18px 18px 8px;">
                     <div class="card-header">
                         <i class="fa-solid fa-kit-medical"></i>
                         <strong>骨質疏鬆與壓迫性骨折</strong>
@@ -1025,21 +1092,21 @@
         <div class="modal-body">
             <h3>認識腦中風 FAST 口訣</h3>
             <h4>什麼是急性腦中風？</h4>
-            <p>急性腦中風是腦血管突發性的阻塞（缺血性中風，約佔 70-80%）或破裂（出血性中風，約佔 20-30%），導致腦細胞缺氧壞死[cite: 5]。腦細胞一旦缺血，每分鐘就會死亡近 200 萬個[cite: 4]！</p>
+            <p>急性腦中風是腦血管突發性的阻塞（缺血性中風，約佔 70-80%）或破裂（出血性中風，約佔 20-30%），導致腦細胞缺氧壞死。腦細胞一旦缺血，每分鐘就會死亡近 200 萬個！</p>
 
             <h4>搶救黃金期：FAST 口訣快速辨識</h4>
             <ul>
-                <li><strong>F - Face (臉歪)：</strong> 請對方露齒微笑，觀察兩側臉部表情是否不對稱、嘴歪眼斜[cite: 4, 10]。</li>
-                <li><strong>A - Arm (手軟)：</strong> 請對方雙手平舉向前，觀察是否有單側手臂無力、垂落[cite: 4, 10]。</li>
-                <li><strong>S - Speech (大舌頭)：</strong> 請對方說一句簡單的話，聽聽看是否口齒不清、說不出來或無法理解語意[cite: 4, 10]。</li>
-                <li><strong>T - Time (記下時間)：</strong> <strong>只要出現上述任一症狀，立刻記下發作時間，並撥打 119 送醫！</strong>[cite: 4, 10]</li>
+                <li><strong>F - Face (臉歪)：</strong> 請對方露齒微笑，觀察兩側臉部表情是否不對稱、嘴歪眼斜。</li>
+                <li><strong>A - Arm (手軟)：</strong> 請對方雙手平舉向前，觀察是否有單側手臂無力、垂落。</li>
+                <li><strong>S - Speech (大舌頭)：</strong> 請對方說一句簡單的話，聽聽看是否口齒不清、說不出來或無法理解語意。</li>
+                <li><strong>T - Time (記下時間)：</strong> <strong>只要出現上述任一症狀，立刻記下發作時間，並撥打 119 送醫！</strong></li>
             </ul>
 
             <div class="modal-highlight-box">
                 <strong>💡 急性急救關鍵治療：</strong>
                 <ul>
-                    <li><strong>靜脈溶栓（iv t-PA）：</strong> 發作 3～4.5 小時內，經評估可用藥溶解血栓[cite: 4, 6]。</li>
-                    <li><strong>微創動脈導管機械取栓術：</strong> 發作 6～24 小時內，經 CT/MRI 影像評估具可拯救腦組織者，可透過微創導管伸入腦血管將血塊取出[cite: 4, 6]。</li>
+                    <li><strong>靜脈溶栓（iv t-PA）：</strong> 發作 3～4.5 小時內，經評估可用藥溶解血栓。</li>
+                    <li><strong>微創動脈導管機械取栓術：</strong> 發作 6～24 小時內，經 CT/MRI 影像評估具可拯救腦組織者，可透過微創導管伸入腦血管將血塊取出。</li>
                 </ul>
             </div>
         </div>
@@ -1053,12 +1120,12 @@
         <div class="modal-body">
             <h3>顱內動脈瘤：腦中的不定時炸彈</h3>
             <h4>什麼是顱內動脈瘤？</h4>
-            <p>顱內動脈瘤<strong>並非惡性腫瘤</strong>，而是腦動脈壁因為管壁結構脆弱，在血流長期衝擊下膨出的一個「血管血泡」[cite: 5]。未破裂時通常無症狀，但若血管壁承受不住壓力而破裂，會引發嚴重的<strong>蜘蛛網膜下腔出血（SAH）</strong>，死亡率極高[cite: 5]。</p>
+            <p>顱內動脈瘤<strong>並非惡性腫瘤</strong>，而是腦動脈壁因為管壁結構脆弱，在血流長期衝擊下膨出的一個「血管血泡」。未破裂時通常無症狀，但若血管壁承受不住壓力而破裂，會引發嚴重的<strong>蜘蛛網膜下腔出血（SAH）</strong>，死亡率極高。</p>
 
             <h4>發現未破裂動脈瘤，該怎麼辦？</h4>
             <ul>
-                <li><strong>臨床追蹤策略：</strong> 若動脈瘤較小（如 &lt; 3~7 mm）、形狀規則且無症狀，可先透過定期影像（MRA 或 CTA）追蹤，並嚴格控制血壓[cite: 6, 7]。</li>
-                <li><strong>手術干預時機：</strong> 若動脈瘤大於 5-7 mm、形狀不規則（有不規則突起）、部位風險高（如前交通動脈或後循環）或有動脈瘤家族史，建議積極治療[cite: 6, 7]。</li>
+                <li><strong>臨床追蹤策略：</strong> 若動脈瘤較小（如 &lt; 3~7 mm）、形狀規則且無症狀，可先透過定期影像（MRA 或 CTA）追蹤，並嚴格控制血壓。</li>
+                <li><strong>手術干預時機：</strong> 若動脈瘤大於 5-7 mm、形狀不規則（有不規則突起）、部位風險高（如前交通動脈或後循環）或有動脈瘤家族史，建議積極治療。</li>
             </ul>
 
             <h4>兩大主流治療方式比一比</h4>
@@ -1073,13 +1140,13 @@
                 <tbody>
                     <tr>
                         <td><strong>原理</strong></td>
-                        <td>開顱直接在動脈瘤頸部夾上鈦合金夾，阻斷血流進入[cite: 6]。</td>
-                        <td>經鼠蹊部股動脈穿刺，導管延伸至瘤內填入白金線圈[cite: 6]。</td>
+                        <td>開顱直接在動脈瘤頸部夾上鈦合金夾，阻斷血流進入。</td>
+                        <td>經鼠蹊部股動脈穿刺，導管延伸至瘤內填入白金線圈。</td>
                     </tr>
                     <tr>
                         <td><strong>優點</strong></td>
-                        <td>復發率極低，適用於分叉處或寬頸動脈瘤[cite: 6]。</td>
-                        <td>微創無開顱傷口、恢復快、住院天數短[cite: 6]。</td>
+                        <td>復發率極低，適用於分叉處或寬頸動脈瘤。</td>
+                        <td>微創無開顱傷口、恢復快、住院天數短。</td>
                     </tr>
                 </tbody>
             </table>
@@ -1094,19 +1161,19 @@
         <div class="modal-body">
             <h3>頸動脈狹窄與腦缺血預防</h3>
             <h4>為什麼頸動脈狹窄會引發腦中風？</h4>
-            <p>頸動脈是心臟輸送血液至腦部最主要的幹道[cite: 5]。隨著年齡增長或高血壓、高血脂、糖尿病、抽菸等因子，血管壁會逐漸堆積脂肪斑塊（粥狀硬化），導致血管腔狹窄[cite: 7]。</p>
+            <p>頸動脈是心臟輸送血液至腦部最主要的幹道。隨著年齡增長或高血壓、高血脂、糖尿病、抽菸等因子，血管壁會逐漸堆積脂肪斑塊（粥狀硬化），導致血管腔狹窄。</p>
             <ul>
-                <li><strong>狹窄減少腦部血流量：</strong> 引發慢性腦缺血[cite: 5]。</li>
-                <li><strong>斑塊破裂形成血栓：</strong> 血栓隨血流掉落至腦內大、小血管，直接引發缺血性腦中風[cite: 4, 5]。</li>
+                <li><strong>狹窄減少腦部血流量：</strong> 引發慢性腦缺血。</li>
+                <li><strong>斑塊破裂形成血栓：</strong> 血栓隨血流掉落至腦內大、小血管，直接引發缺血性腦中風。</li>
             </ul>
 
             <h4>篩檢工具：頸動脈超音波</h4>
-            <p>無輻射、無侵入性，可清楚評估血管內膜厚度（IMT）、測量狹窄程度及斑塊品質[cite: 6, 10]。自由健康網與專家皆建議三高風險族群定期檢查[cite: 6, 7]。</p>
+            <p>無輻射、無侵入性，可清楚評估血管內膜厚度（IMT）、測量狹窄程度及斑塊品質。建議三高風險族群定期接受檢查與追蹤。</p>
 
             <h4>治療與保健須知</h4>
             <ol>
-                <li><strong>藥物與生活保健：</strong> 服用抗血小板藥物（如阿斯匹靈）預防血栓[cite: 6]；控管「三高」（血壓 &lt; 140/90 mmHg、壞膽固醇 &lt; 100 mg/dL）[cite: 7]；戒菸、限鹽、維持運動[cite: 7]。</li>
-                <li><strong>頸動脈支架置放術（CAS）：</strong> 經由微創導管置入金屬支架撐開狹窄血管，恢復腦部正常血流[cite: 6]。</li>
+                <li><strong>藥物與生活保健：</strong> 服用抗血小板藥物（如阿斯匹靈）預防血栓；控管「三高」（血壓 &lt; 140/90 mmHg、壞膽固醇 &lt; 100 mg/dL）；戒菸、限鹽、維持運動。</li>
+                <li><strong>頸動脈支架置放術（CAS）：</strong> 經由微創導管置入金屬支架撐開狹窄血管，恢復腦部正常血流。</li>
             </ol>
         </div>
     </div>
