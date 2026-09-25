@@ -893,7 +893,11 @@
                 text-align: center;
             }
         }
+        #modal-guestbook .modal-content { max-width: 900px; }
+        #modal-guestbook .waline-intro { margin: 0 0 14px; color: var(--text-muted); }
+        #modal-guestbook #waline { width: 100%; min-width: 0; }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
 </head>
 <body>
 
@@ -924,13 +928,10 @@
             <p>致力於提供最先進的腦血管介入手術、顯微開顱與複合式手術，守護患者腦與脊椎健康。</p>
         </div>
 
-        <!-- 右下角按讚數與留言按鈕專區（預設維持 0 點擊跳出彈窗） -->
+        <!-- 留言由 Waline 提供，訪客可使用電子郵件留言 -->
         <div class="header-stats-badge">
-            <button class="stat-btn like-btn" onclick="addLike()">
-                <i class="fa-solid fa-thumbs-up"></i> <span id="likeCount">0</span>
-            </button>
-            <button class="stat-btn comment-badge-btn" onclick="openModal('modal-guestbook')">
-                <i class="fa-solid fa-comment-dots"></i> <span id="commentBadgeCount">0</span> 則留言
+            <button class="stat-btn comment-badge-btn" type="button" onclick="openModal('modal-guestbook')" aria-label="開啟留言與反應">
+                <i class="fa-solid fa-comments"></i> 留言與反應
             </button>
         </div>
     </header>
@@ -1264,44 +1265,17 @@
 
 <!-- ==================== 彈出視窗專區 (Modal Pop-ups) ==================== -->
 
-<!-- Modal 0: 免登入訪客留言交流視窗（可收闔） -->
+<!-- Modal 0: Waline 訪客留言 -->
 <div id="modal-guestbook" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-guestbook')">
-    <div class="modal-content">
-        <button class="modal-close-btn" onclick="closeModal('modal-guestbook')">&times;</button>
+    <div class="modal-content waline-modal-content">
+        <button class="modal-close-btn" onclick="closeModal('modal-guestbook')" aria-label="關閉留言視窗">&times;</button>
         <div class="modal-body">
-            <h3><i class="fa-solid fa-comments"></i> 訪客留言交流專區</h3>
-            
-            <div class="guestbook-form">
-                <form id="commentForm" onsubmit="submitComment(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="authorName"><i class="fa-solid fa-user"></i> 您的稱呼／暱稱 *</label>
-                            <input type="text" id="authorName" class="form-control" placeholder="例：張先生 / 林女士" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="authorContact"><i class="fa-solid fa-envelope"></i> 聯絡 Email 或電話（選填，不會公開）</label>
-                            <input type="text" id="authorContact" class="form-control" placeholder="例：service@example.com">
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <label for="commentContent"><i class="fa-solid fa-pen-to-square"></i> 留言內容 *</label>
-                        <textarea id="commentContent" class="form-control" placeholder="請在此留下您的問題或感謝心聲（免登入即可留言）..." required></textarea>
-                    </div>
-                    <div style="display: flex; justify-content: flex-end;">
-                        <button type="submit" class="btn-submit-comment">
-                            <i class="fa-solid fa-paper-plane"></i> 送出留言
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="guestbook-list" id="commentList">
-                <div class="no-comment-tip" id="noCommentTip">目前尚無留言，歡迎成為第一位留言的訪客！</div>
-            </div>
+            <h3><i class="fa-solid fa-comments"></i> 留言與反應</h3>
+            <p class="waline-intro">可直接填寫暱稱與電子郵件留言，不必登入 GitHub。也可選擇使用支援的社群帳號登入。</p>
+            <div id="waline"></div>
         </div>
     </div>
 </div>
-
 <!-- Modal 1: 認識腦中風 FAST 口訣 -->
 <div id="modal-1" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-1')">
     <div class="modal-content">
@@ -1398,25 +1372,28 @@
 
 <!-- JS 互動腳本 -->
 <script>
-    let hasLiked = false;
-
-    // 按讚功能
-    function addLike() {
-        const likeCountEl = document.getElementById('likeCount');
-        let currentLikes = parseInt(likeCountEl.innerText);
-        if (!hasLiked) {
-            likeCountEl.innerText = currentLikes + 1;
-            hasLiked = true;
-        } else {
-            likeCountEl.innerText = currentLikes - 1;
-            hasLiked = false;
+    function loadWaline() {
+        const container = document.getElementById('waline');
+        if (!container || container.dataset.loaded === 'true') return;
+        if (!window.Waline) {
+            container.innerHTML = '<p>留言系統載入中，請稍後再試。</p>';
+            return;
         }
+        window.Waline.init({
+            el: '#waline',
+            serverURL: 'https://waline-server-three-nu.vercel.app',
+            lang: 'zh-TW',
+            login: 'enable',
+            requiredMeta: ['nick', 'mail'],
+            dark: 'auto'
+        });
+        container.dataset.loaded = 'true';
     }
-
     // 視窗開啟 / 關閉控制
     function openModal(modalId) {
         document.getElementById(modalId).style.display = 'flex';
         document.body.style.overflow = 'hidden';
+        if (modalId === 'modal-guestbook') loadWaline();
     }
 
     function closeModal(modalId) {
@@ -1429,68 +1406,9 @@
             closeModal(modalId);
         }
     }
-
-    // 免登入留言提交處理
-    function submitComment(event) {
-        event.preventDefault();
-        
-        const nameInput = document.getElementById('authorName');
-        const contentInput = document.getElementById('commentContent');
-        const commentList = document.getElementById('commentList');
-        const badgeCountEl = document.getElementById('commentBadgeCount');
-        const noCommentTip = document.getElementById('noCommentTip');
-
-        const name = nameInput.value.trim();
-        const content = contentInput.value.trim();
-
-        if (!name || !content) {
-            alert('請填寫暱稱與留言內容！');
-            return;
-        }
-
-        // 移除無留言提示文字
-        if (noCommentTip) {
-            noCommentTip.style.display = 'none';
-        }
-
-        const today = new Date().toISOString().split('T')[0];
-
-        // 建立新留言卡片
-        const newComment = document.createElement('div');
-        newComment.className = 'comment-item';
-        newComment.style.animation = 'modalFadeIn 0.4s ease';
-        newComment.innerHTML = `
-            <div class="comment-header">
-                <span class="comment-author"><i class="fa-solid fa-circle-user"></i> ${escapeHtml(name)}</span>
-                <span class="comment-date">${today}</span>
-            </div>
-            <div class="comment-text">
-                ${escapeHtml(content)}
-            </div>
-        `;
-
-        commentList.insertBefore(newComment, commentList.firstChild);
-
-        // 即時累加右下角的留言數
-        let currentCount = parseInt(badgeCountEl.innerText);
-        badgeCountEl.innerText = currentCount + 1;
-
-        nameInput.value = '';
-        document.getElementById('authorContact').value = '';
-        contentInput.value = '';
-
-        alert('留言成功送出！');
-    }
-
-    function escapeHtml(text) {
-        return text
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
 </script>
 
+    <script src="https://unpkg.com/@waline/client@v3/dist/waline.js"></script>
 </body>
 </html>
+
